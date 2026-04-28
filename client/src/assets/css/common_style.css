@@ -1,0 +1,10 @@
+body {
+  background-color: #EADFB1;
+}
+
+body {
+  background-image: url("../images/rainbow_background.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
