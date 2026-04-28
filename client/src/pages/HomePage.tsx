@@ -53,7 +53,9 @@ export default function HomePage() {
                 maxWidth: 500,
                 aspectRatio: '1 / 1',
                 overflow: 'hidden',
+                border: '1px solid #444',
                 borderRadius: 2,
+                
               }}
             >
               <Box
@@ -63,6 +65,7 @@ export default function HomePage() {
                   width: '100%',
                   height: '100%',
                   objectFit: 'cover',
+                  
                 }}
               />
             </Box>

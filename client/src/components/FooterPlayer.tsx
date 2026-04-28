@@ -141,7 +141,7 @@ export default function FooterPlayer() {
                 setOpen((prev) => !prev);
               }}
               sx={{
-                color: 'white',
+                color: '#ff6b00',
                 opacity: 0.8,
                 transition: 'all 0.2s ease',
                 '&:hover': {
