@@ -13,6 +13,7 @@ export const AudioProvider = ({ children }: { children: ReactNode }) => {
   const [track, setTrack] = useState<Track | null>(null);
   const [progress, setProgress] = useState(0);
   const [volume, setVolume] = useState(1);
+  const [prevVolume, setPrevVolume] = useState(1);
 
   const createAudio = () => {
     const audio = new Audio();
@@ -81,12 +82,21 @@ export const AudioProvider = ({ children }: { children: ReactNode }) => {
     return () => clearInterval(interval);
   }, [track]);
 
+  const toggleMute = () => {
+  if (volume > 0) {
+    setPrevVolume(volume);
+    setVolume(0);
+  } else {
+    setVolume(prevVolume);
+  }
+};
+
   useEffect(() => {
     audioRef.current.volume = volume;
   }, [volume]);
 
   return (
-    <AudioContext.Provider value={{ isPlaying, play, stop, track, progress, setVolume }}>
+    <AudioContext.Provider value={{ isPlaying, play, stop, track, progress, volume, setVolume, toggleMute }}>
       {children}
     </AudioContext.Provider>
   );

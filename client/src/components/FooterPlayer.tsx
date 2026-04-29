@@ -1,13 +1,14 @@
 // client/src/components/FooterPlayer.tsx
-import { Box, Slider, IconButton, Typography } from '@mui/material';
+import { Box, Stack, Slider, IconButton, Typography } from '@mui/material';
 import { PlayArrow, Pause } from '@mui/icons-material';
 import { ExpandLess, ExpandMore } from '@mui/icons-material';
+import { VolumeUp, VolumeOff } from '@mui/icons-material';
 import { useAudio } from '../hooks/useAudio';
 import { useState } from 'react';
 import ExpandedPlayer from './ExpandedPlayer';
 
 export default function FooterPlayer() {
-  const { isPlaying, play, stop, track, setVolume } = useAudio();
+  const { isPlaying, play, stop, track, setVolume, volume, toggleMute } = useAudio();
   const [open, setOpen] = useState(false);
 
   if (!track) return null;
@@ -152,7 +153,7 @@ export default function FooterPlayer() {
             >
               {open ? <ExpandMore /> : <ExpandLess />}
             </IconButton>
-            <Slider
+            {/* <Slider
               defaultValue={100}
               onChange={(_, value) => {
                 const v = (value as number) / 100;
@@ -160,7 +161,37 @@ export default function FooterPlayer() {
               }}
               size="small"
               sx={{ width: 80, color: 'white' }}
+            /> */}
+            <Stack direction="row"
+              spacing={1}
+              sx={{
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}>
+            <IconButton
+              onClick={(e) => {
+                e.stopPropagation();
+                toggleMute();
+              }}
+              sx={{ color: 'white' }}
+            >
+              {volume === 0 ? <VolumeOff /> : <VolumeUp />}
+            </IconButton>
+
+            {/* 🎚️ SLIDER */}
+            <Slider
+              value={volume * 100}
+              onChange={(_, value) => {
+                const v = (value as number) / 100;
+                setVolume(v);
+              }}
+              size="small"
+              sx={{
+                width: 90,
+                color: 'white',
+              }}
             />
+            </Stack>
           </Box>
         </Box>
       </Box>

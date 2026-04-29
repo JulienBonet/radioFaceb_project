@@ -16,7 +16,9 @@ export interface AudioContextType {
   stop: () => void;
   track: Track | null;
   progress: number;
+  volume: number;
   setVolume: (v: number) => void;
+  toggleMute: () => void;
 }
 
 export const AudioContext = createContext<AudioContextType | null>(null);
