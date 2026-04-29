@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from 'react';
 import { AudioContext } from './AudioContext';
 import type { ReactNode } from 'react';
 import type { Track } from '../types/audio';
+import { EMISSIONS } from "../config/emissions";
 
 export const AudioProvider = ({ children }: { children: ReactNode }) => {
   const STREAM_URL = 'http://ecmanager6.pro-fhi.net:1400/stream';
@@ -95,8 +96,14 @@ export const AudioProvider = ({ children }: { children: ReactNode }) => {
     audioRef.current.volume = volume;
   }, [volume]);
 
+const emission = track?.playlist_title
+  ? EMISSIONS[
+      track.playlist_title.replace(" ", "_").toUpperCase()
+    ] || EMISSIONS.DEFAULT
+  : EMISSIONS.DEFAULT;
+
   return (
-    <AudioContext.Provider value={{ isPlaying, play, stop, track, progress, volume, setVolume, toggleMute }}>
+    <AudioContext.Provider value={{ isPlaying, play, stop, track, progress, volume, setVolume, toggleMute, emission }}>
       {children}
     </AudioContext.Provider>
   );

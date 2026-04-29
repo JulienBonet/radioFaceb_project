@@ -1,5 +1,6 @@
 // client/src/context/AudioContext.tsx
 import { createContext } from "react";
+import type { EmissionConfig } from "../config/emissions";
 
 export interface Track {
   title: string;
@@ -8,6 +9,8 @@ export interface Track {
   length: number;
   img_medium_url: string;
   img_large_url: string;
+  playlist_title: string;
+  dj_name: string;
 }
 
 export interface AudioContextType {
@@ -19,6 +22,7 @@ export interface AudioContextType {
   volume: number;
   setVolume: (v: number) => void;
   toggleMute: () => void;
+  emission: EmissionConfig;
 }
 
 export const AudioContext = createContext<AudioContextType | null>(null);
