@@ -1,12 +1,12 @@
 // client/src/context/AudioProvider.tsx
-import { useEffect, useRef, useState } from 'react';
-import { AudioContext } from './AudioContext';
-import type { ReactNode } from 'react';
-import type { Track } from '../types/audio';
-import { EMISSIONS } from "../config/emissions";
+import { useEffect, useRef, useState } from "react";
+import { AudioContext } from "./AudioContext";
+import type { ReactNode } from "react";
+import type { Track } from "../types/audio";
+import { getCurrentEmission } from "../utils/getCurrentEmission";
 
 export const AudioProvider = ({ children }: { children: ReactNode }) => {
-  const STREAM_URL = 'http://ecmanager6.pro-fhi.net:1400/stream';
+  const STREAM_URL = "http://ecmanager6.pro-fhi.net:1400/stream";
 
   const audioRef = useRef<HTMLAudioElement>(new Audio());
 
@@ -16,14 +16,12 @@ export const AudioProvider = ({ children }: { children: ReactNode }) => {
   const [volume, setVolume] = useState(1);
   const [prevVolume, setPrevVolume] = useState(1);
 
+  const [emission, setEmission] = useState(getCurrentEmission());
+
   const createAudio = () => {
     const audio = new Audio();
-
-    // 💥 évite le cache / reuse buffer
-    audio.src = `${STREAM_URL}?t=${Date.now()}`;
-
-    audio.preload = 'none';
-
+    audio.src = `${STREAM_URL}?t=${Date.now()}`; // 🔥 anti-buffer cache
+    audio.preload = "none";
     return audio;
   };
 
@@ -33,6 +31,7 @@ export const AudioProvider = ({ children }: { children: ReactNode }) => {
     }
 
     audioRef.current = createAudio();
+    audioRef.current.volume = volume;
 
     await audioRef.current.play();
 
@@ -42,36 +41,39 @@ export const AudioProvider = ({ children }: { children: ReactNode }) => {
   const stop = () => {
     if (audioRef.current) {
       audioRef.current.pause();
-      audioRef.current.src = '';
+      audioRef.current.src = "";
       audioRef.current.load();
     }
 
     setIsPlaying(false);
   };
 
-  useEffect(() => {
-    let isMounted = true;
+  const toggleMute = () => {
+    if (volume > 0) {
+      setPrevVolume(volume);
+      setVolume(0);
+    } else {
+      setVolume(prevVolume);
+    }
+  };
 
+  // 🎧 TRACK
+  useEffect(() => {
     const loadTrack = async () => {
       const res = await fetch(
-        'https://ecmanager6.pro-fhi.net:1390/api/v2/history/?limit=1&server=1',
+        "https://ecmanager6.pro-fhi.net:1390/api/v2/history/?limit=1&server=1"
       );
       const data = await res.json();
-
-      if (isMounted) {
-        setTrack(data.results[0]);
-      }
+      setTrack(data.results[0]);
     };
 
     loadTrack();
     const interval = setInterval(loadTrack, 5000);
 
-    return () => {
-      isMounted = false;
-      clearInterval(interval);
-    };
+    return () => clearInterval(interval);
   }, []);
 
+  // ⏱ PROGRESS
   useEffect(() => {
     const interval = setInterval(() => {
       if (track) {
@@ -83,27 +85,34 @@ export const AudioProvider = ({ children }: { children: ReactNode }) => {
     return () => clearInterval(interval);
   }, [track]);
 
-  const toggleMute = () => {
-  if (volume > 0) {
-    setPrevVolume(volume);
-    setVolume(0);
-  } else {
-    setVolume(prevVolume);
-  }
-};
-
+  // 🔊 VOLUME
   useEffect(() => {
     audioRef.current.volume = volume;
   }, [volume]);
 
-const emission = track?.playlist_title
-  ? EMISSIONS[
-      track.playlist_title.replace(" ", "_").toUpperCase()
-    ] || EMISSIONS.DEFAULT
-  : EMISSIONS.DEFAULT;
+  // 🎨 EMISSION AUTO UPDATE
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setEmission(getCurrentEmission());
+    }, 60000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   return (
-    <AudioContext.Provider value={{ isPlaying, play, stop, track, progress, volume, setVolume, toggleMute, emission }}>
+    <AudioContext.Provider
+      value={{
+        isPlaying,
+        play,
+        stop,
+        track,
+        progress,
+        volume,
+        setVolume,
+        toggleMute,
+        emission,
+      }}
+    >
       {children}
     </AudioContext.Provider>
   );

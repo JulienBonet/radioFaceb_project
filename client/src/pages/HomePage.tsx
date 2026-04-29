@@ -12,6 +12,12 @@ export default function HomePage() {
 
   const progressPercent = Math.min(progress * 100, 100);
 
+  const lightShadow2 = `
+  0px 2px 4px -1px rgba(255,255,255,0.3),
+  0px 4px 5px 0px rgba(255,255,255,0.2),
+  0px 1px 10px 0px rgba(255,255,255,0.2)
+  `;
+
   return (
     <Box
       sx={{
@@ -21,13 +27,12 @@ export default function HomePage() {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        
       }}
     >
       <Grid
         container
         spacing={6}
-        sx={{ backgroundColor: 'white', padding: 2, borderRadius: '10px', boxShadow: 6}}
+        sx={{ backgroundColor: 'white', padding: 2, borderRadius: '10px', boxShadow: 6 }}
       >
         {/* LEFT */}
         <Grid size={{ xs: 12, md: 6 }}>
@@ -44,15 +49,15 @@ export default function HomePage() {
               spacing={1}
               sx={{
                 width: '100%',
-                maxWidth: 500,
+                maxWidth: 420,
               }}
             >
               <Typography sx={{ color: '#ff3b3b', fontWeight: 700 }}>● EN DIRECT</Typography>
             </Stack>
             <Box
               sx={{
-                width: '100%',
-                maxWidth: 500,
+                width: 420,
+                flexShrink: 0,
                 aspectRatio: '1 / 1',
                 overflow: 'hidden',
                 border: '1px solid #444',
@@ -75,7 +80,7 @@ export default function HomePage() {
               spacing={0}
               sx={{
                 width: '100%',
-                maxWidth: 500,
+                maxWidth: 420,
               }}
             >
               <Typography sx={{ color: 'black', fontWeight: 700 }}>{track.title}</Typography>
@@ -87,7 +92,7 @@ export default function HomePage() {
                 height: 4,
                 mt: 2,
                 width: '100%',
-                maxWidth: 500,
+                maxWidth: 420,
                 background: 'rgba(0,0,0,0.1)',
                 borderRadius: 2,
                 overflow: 'hidden',
@@ -146,7 +151,7 @@ export default function HomePage() {
                 border: '1px solid white',
                 borderRadius: 2,
                 padding: 1,
-                px:2,
+                px: 2,
                 mt: 1,
               }}
             >
@@ -154,9 +159,13 @@ export default function HomePage() {
                 component="img"
                 src={emission.image}
                 sx={{
-                  width: '10%',
+                  width: 50,
+                  height: 50,
+                  objectFit: 'cover',
                   borderRadius: 2,
-                  boxShadow: 3,
+                  boxShadow: emission.needsLightShadow
+                    ? lightShadow2
+                    : 3,
                 }}
               />
 

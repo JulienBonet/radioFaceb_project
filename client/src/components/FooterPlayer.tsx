@@ -11,12 +11,13 @@ export default function FooterPlayer() {
   const { isPlaying, play, stop, track, setVolume, volume, toggleMute, } = useAudio();
   const [open, setOpen] = useState(false);
 
+
   if (!track) return null;
 
   return (
     <>
       <Box
-        onClick={() => setOpen(true)}
+        
         sx={{
           position: 'fixed',
           bottom: 0,
@@ -137,10 +138,7 @@ export default function FooterPlayer() {
             }}
           >
             <IconButton
-              onClick={(e) => {
-                e.stopPropagation();
-                setOpen((prev) => !prev);
-              }}
+              onClick={() => setOpen(true)}
               sx={{
                 color: '#ff6b00',
                 opacity: 0.8,
@@ -153,15 +151,6 @@ export default function FooterPlayer() {
             >
               {open ? <ExpandMore /> : <ExpandLess />}
             </IconButton>
-            {/* <Slider
-              defaultValue={100}
-              onChange={(_, value) => {
-                const v = (value as number) / 100;
-                setVolume(v);
-              }}
-              size="small"
-              sx={{ width: 80, color: 'white' }}
-            /> */}
             <Stack direction="row"
               spacing={1}
               sx={{
