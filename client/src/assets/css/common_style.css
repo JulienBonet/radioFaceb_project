@@ -1,14 +1,20 @@
 :root {
   --color_main_bg: #eadfb1;
-  --color_01: #d07f0c;
+  --color_01: #cf7e0f;
   --color_02: #2e6260;
   --color_03: #a83f2c;
   --color_04: #283966;
   --color_05: #482c21;
+
+  --font_01: Bungee;
+  --font_02: Bungee Hairline;
+  --font_03: Bungee Shade;
+  --font_04: open Sans;
+  --font_05: Courier Prime;
 }
 
 body {
-  background-color:var(--color_main_bg);
+  background-color: var(--color_main_bg);
   background-image: url('../images/rainbow_background.jpg');
   background-size: cover;
   background-position: center;
