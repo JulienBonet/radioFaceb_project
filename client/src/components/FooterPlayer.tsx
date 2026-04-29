@@ -8,7 +8,7 @@ import { useState } from 'react';
 import ExpandedPlayer from './ExpandedPlayer';
 
 export default function FooterPlayer() {
-  const { isPlaying, play, stop, track, setVolume, volume, toggleMute, emission } = useAudio();
+  const { isPlaying, play, stop, track, setVolume, volume, toggleMute, } = useAudio();
   const [open, setOpen] = useState(false);
 
   if (!track) return null;
