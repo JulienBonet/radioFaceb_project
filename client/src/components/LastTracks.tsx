@@ -21,7 +21,7 @@ export default function LastTracks({ compact = false }: Props) {
   useEffect(() => {
     const fetchTracks = async () => {
       const res = await fetch(
-        'https://ecmanager6.pro-fhi.net:1390/api/v2/history/?limit=6&server=1',
+        'https://ecmanager6.pro-fhi.net:1390/api/v2/history/?limit=5&server=1',
       );
       const data = await res.json();
       setTracks(data.results.slice(1));
@@ -40,6 +40,8 @@ export default function LastTracks({ compact = false }: Props) {
         border: '1px dashed #444',
         borderRadius: 2,
         p: 2,
+        maxWidth: '100%',
+        overflow: 'hidden',
       }}
     >
       <Typography variant="h6" sx={{ color: 'black', mb: 1 }}>
@@ -49,55 +51,54 @@ export default function LastTracks({ compact = false }: Props) {
 
       {tracks.map((t) => (
         <>
-        <Box
-          key={t.id}
-          sx={{
-            display: 'flex',
-            alignItems: 'center',
-            mb: compact ? 1 : 2,
-            gap: 2,
-          }}
-        >
           <Box
-            component="img"
-            src={t.img_medium_url}
+            key={t.id}
             sx={{
-              width: compact ? 40 : 50,
-              height: compact ? 40 : 50,
-              borderRadius: 1,
+              display: 'flex',
+              alignItems: 'center',
+              mb: compact ? 1 : 2,
+              gap: 2,
+              minWidth: 0,
             }}
-          />
+          >
+            <Box
+              component="img"
+              src={t.img_medium_url}
+              sx={{
+                width: compact ? 40 : 50,
+                height: compact ? 40 : 50,
+                borderRadius: 1,
+              }}
+            />
 
-          <Box sx={{ flex: 1, minWidth: 0 }}>
+            <Box sx={{ flex: 1, minWidth: 0 }}>
+              <Typography
+                sx={{
+                  color: 'black',
+                  fontSize: compact ? 12 : 14,
+                  whiteSpace: 'nowrap',
+                  overflow: 'hidden',
+                  textOverflow: 'ellipsis',
+                }}
+              >
+                {t.author} — {t.title}
+              </Typography>
+            </Box>
+
             <Typography
               sx={{
                 color: 'black',
-                fontSize: compact ? 12 : 14,
-                whiteSpace: 'nowrap',
-                overflow: 'hidden',
-                textOverflow: 'ellipsis',
+                fontSize: 12,
+                flexShrink: 0,
               }}
             >
-              {t.author} — {t.title}
+              {new Date(t.ts).toLocaleTimeString([], {
+                hour: '2-digit',
+                minute: '2-digit',
+              })}
             </Typography>
           </Box>
-
-          <Typography
-            sx={{
-              color: 'black',
-              fontSize: 12,
-            }}
-          >
-            {new Date(t.ts).toLocaleTimeString([], {
-              hour: '2-digit',
-              minute: '2-digit',
-            })}
-          </Typography>
-
-          
-
-        </Box>
-        <Divider sx={{ my: 1 }} />
+          <Divider sx={{ my: 1 }} />
         </>
       ))}
     </Box>

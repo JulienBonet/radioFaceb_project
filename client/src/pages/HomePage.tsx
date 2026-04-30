@@ -10,6 +10,8 @@ export default function HomePage() {
 
   if (!track) return null;
 
+  const trackKey = track?.ts ?? track?.title;
+
   const progressPercent = Math.min(progress * 100, 100);
 
   const lightShadow2 = `
@@ -32,10 +34,17 @@ export default function HomePage() {
       <Grid
         container
         spacing={6}
-        sx={{ backgroundColor: 'white', padding: 2, borderRadius: '10px', boxShadow: 6 }}
+        sx={{
+          backgroundColor: 'white',
+          maxWidth: 1080,
+          margin: '0 auto',
+          padding: 3,
+          borderRadius: '10px',
+          boxShadow: 6,
+        }}
       >
         {/* LEFT */}
-        <Grid size={{ xs: 12, md: 6 }}>
+        <Grid size={{ xs: 12, md: 6 }} sx={{ minWidth: 0 }}>
           <Stack
             direction="column"
             spacing={1}
@@ -49,14 +58,13 @@ export default function HomePage() {
               spacing={1}
               sx={{
                 width: '100%',
-                maxWidth: 420,
               }}
             >
               <Typography sx={{ color: '#ff3b3b', fontWeight: 700 }}>● EN DIRECT</Typography>
             </Stack>
             <Box
               sx={{
-                width: 420,
+                width: '100%',
                 flexShrink: 0,
                 aspectRatio: '1 / 1',
                 overflow: 'hidden',
@@ -66,33 +74,49 @@ export default function HomePage() {
             >
               <Box
                 component="img"
-                src={track.img_large_url}
+                src={track.img_medium_url}
                 sx={{
                   width: '100%',
-                  height: '100%',
                   objectFit: 'cover',
+                  animation: 'imgFade 0.6s ease',
                 }}
               />
             </Box>
 
             <Stack
+              key={trackKey}
               direction="column"
               spacing={0}
               sx={{
                 width: '100%',
-                maxWidth: 420,
+                minwidth: 0,
               }}
             >
-              <Typography sx={{ color: 'black', fontWeight: 700 }}>{track.title}</Typography>
+              <Typography
+                noWrap
+                sx={{
+                  color: 'black',
+                  fontWeight: 700,
+                  overflow: 'hidden',
+                  textOverflow: 'ellipsis',
+                  
+                }}
+              >
+                {track.title}
+              </Typography>
 
-              <Typography sx={{ color: 'black' }}>{track.author}</Typography>
+              <Typography
+                noWrap
+                sx={{ color: 'black', overflow: 'hidden', textOverflow: 'ellipsis' }}
+              >
+                {track.author}
+              </Typography>
             </Stack>
             <Box
               sx={{
                 height: 4,
                 mt: 2,
                 width: '100%',
-                maxWidth: 420,
                 background: 'rgba(0,0,0,0.1)',
                 borderRadius: 2,
                 overflow: 'hidden',
@@ -110,7 +134,7 @@ export default function HomePage() {
         </Grid>
 
         {/* RIGHT */}
-        <Grid size={{ xs: 12, md: 6 }}>
+        <Grid size={{ xs: 12, md: 6 }} sx={{ minWidth: 0 }}>
           <Typography
             sx={{
               color: 'var(--color_05)',
@@ -136,6 +160,7 @@ export default function HomePage() {
           <Divider sx={{ my: 2 }} />
           <Box
             sx={{
+              width: '100%',
               mb: 3,
               borderRadius: 3,
               backdropFilter: 'blur(10px)',
@@ -163,9 +188,7 @@ export default function HomePage() {
                   height: 50,
                   objectFit: 'cover',
                   borderRadius: 2,
-                  boxShadow: emission.needsLightShadow
-                    ? lightShadow2
-                    : 3,
+                  boxShadow: emission.needsLightShadow ? lightShadow2 : 3,
                 }}
               />
 
