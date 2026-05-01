@@ -69,7 +69,7 @@ export default function ExpandedPlayer({ open, onClose }: Props) {
         {/* cover */}
         <Box
           component="img"
-          src={track.img_large_url}
+          src={track.img_medium_url || '/images/cover_default.jpg'}
           alt={track.title}
           sx={{
             width: "100%",

@@ -1,14 +1,21 @@
+// client/src/App.tsx
+import { BrowserRouter } from "react-router-dom";
+
 import { AudioProvider } from "./context/AudioProvider";
+import Header from "./components/Header";
 import FooterPlayer from "./components/FooterPlayer";
-import HomePage from "./pages/HomePage";
+import Router from "./router/Router";
 
 export default function App() {
   return (
-    <AudioProvider>
-      {/* tes routes */}
-      <HomePage />
-      <FooterPlayer />
-    </AudioProvider>
+    <BrowserRouter>
+      <AudioProvider>
+        <Header />
+
+        <Router />
+
+        <FooterPlayer />
+      </AudioProvider>
+    </BrowserRouter>
   );
 }
-

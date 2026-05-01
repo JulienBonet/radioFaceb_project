@@ -1,11 +1,13 @@
 import { Box, Stack } from '@mui/material';
+// import { Button } from '@mui/material';
+// import { Link } from 'react-router-dom';
 
 const Header = () => {
   return (
     <Stack
       direction="row"
       sx={{
-        height: 50,
+        height: 60,
         backgroundColor: 'black',
         justifyContent: 'center',
         alignItems: 'center',

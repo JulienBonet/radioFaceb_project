@@ -45,7 +45,7 @@ export default function LastTracks({ compact = false }: Props) {
         minWidth: 0,
       }}
     >
-      <Typography variant="h6" sx={{ color: 'black', mb: 1 }}>
+      <Typography sx={{ color: 'black', mb: 1 }}>
         Derniers titres
       </Typography>
       <Divider sx={{ my: 1 }} />
