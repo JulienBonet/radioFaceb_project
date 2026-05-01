@@ -4,6 +4,7 @@ import Grid from '@mui/material/Grid';
 import Divider from '@mui/material/Divider';
 import { useAudio } from '../hooks/useAudio';
 import LastTracks from '../components/LastTracks';
+import formatTime from '../utils/formatTime';
 
 export default function HomePage() {
   const { track, progress, emission } = useAudio();
@@ -13,6 +14,7 @@ export default function HomePage() {
   const trackKey = track?.ts ?? track?.title;
 
   const progressPercent = Math.min(progress * 100, 100);
+  const elapsed = track.length * progress;
 
   const lightShadow2 = `
   0px 2px 4px -1px rgba(255,255,255,0.3),
@@ -36,7 +38,7 @@ export default function HomePage() {
         spacing={6}
         sx={{
           backgroundColor: 'white',
-          maxWidth: 1080,
+          maxWidth: 1000,
           margin: '0 auto',
           padding: 3,
           borderRadius: '10px',
@@ -65,7 +67,6 @@ export default function HomePage() {
             <Box
               sx={{
                 width: '100%',
-                flexShrink: 0,
                 aspectRatio: '1 / 1',
                 overflow: 'hidden',
                 border: '1px solid #444',
@@ -74,11 +75,11 @@ export default function HomePage() {
             >
               <Box
                 component="img"
-                src={track.img_medium_url}
+                src={track.img_medium_url || '/images/cover_default.jpg'}
                 sx={{
                   width: '100%',
                   objectFit: 'cover',
-                  animation: 'imgFade 0.6s ease',
+                  aspectRatio: '1 / 1',
                 }}
               />
             </Box>
@@ -99,7 +100,6 @@ export default function HomePage() {
                   fontWeight: 700,
                   overflow: 'hidden',
                   textOverflow: 'ellipsis',
-                  
                 }}
               >
                 {track.title}
@@ -130,6 +130,28 @@ export default function HomePage() {
                 }}
               />
             </Box>
+            <Stack
+              direction="row"
+              sx={{
+                width: '100%',
+                justifyContent: 'space-between',
+                mt: 0.5,
+              }}
+            >
+              <Typography
+                variant="caption"
+                sx={{ color: 'rgba(0,0,0,0.6)', fontFamily: 'monospace' }}
+              >
+                {formatTime(elapsed)}
+              </Typography>
+
+              <Typography
+                variant="caption"
+                sx={{ color: 'rgba(0,0,0,0.6)', fontFamily: 'monospace' }}
+              >
+                {formatTime(track.length)}
+              </Typography>
+            </Stack>
           </Stack>
         </Grid>
 

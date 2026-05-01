@@ -42,6 +42,7 @@ export default function LastTracks({ compact = false }: Props) {
         p: 2,
         maxWidth: '100%',
         overflow: 'hidden',
+        minWidth: 0,
       }}
     >
       <Typography variant="h6" sx={{ color: 'black', mb: 1 }}>
@@ -63,16 +64,18 @@ export default function LastTracks({ compact = false }: Props) {
           >
             <Box
               component="img"
-              src={t.img_medium_url}
+              src={t.img_medium_url || '/images/cover_default.jpg'}
               sx={{
                 width: compact ? 40 : 50,
                 height: compact ? 40 : 50,
                 borderRadius: 1,
+                border: '1px solid rgba(80, 78, 78, 0.27)',
               }}
             />
 
             <Box sx={{ flex: 1, minWidth: 0 }}>
               <Typography
+                noWrap
                 sx={{
                   color: 'black',
                   fontSize: compact ? 12 : 14,
