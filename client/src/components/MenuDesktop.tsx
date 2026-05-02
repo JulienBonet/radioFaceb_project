@@ -27,7 +27,6 @@ const MenuDesktop = () => {
 
             color: 'white',
             textTransform: 'none',
-
           },
           '& .MuiButtonGroup-grouped': {
             borderColor: 'white', // <-- ça corrige les séparateurs
@@ -37,20 +36,20 @@ const MenuDesktop = () => {
         <Button component={Link} to="/">
           PLAYER
         </Button>
-        <Button component={Link} to="/grille">
-          GRILLE
-        </Button>
         <Button component={Link} to="/historique">
           C'ETAIT QUOI ?
         </Button>
         <Button component={Link} to="/mixtapes">
           MIXTAPES
         </Button>
+        <Button component={Link} to="/grille">
+          GRILLE
+        </Button>
         <Button component={Link} to="/presentation">
           LA RADIO
         </Button>
         <Button component={Link} to="/comment_ecouter">
-          COMMENT ECOUTER
+          COMMENT ECOUTER ?
         </Button>
         <Button component={Link} to="/contact">
           CONTACT
