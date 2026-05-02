@@ -1,14 +1,15 @@
 // client/src/pages/HomePage.tsx
 import { Box, Stack, Typography } from '@mui/material';
 import Grid from '@mui/material/Grid';
-import Divider from '@mui/material/Divider';
 import { useAudio } from '../hooks/useAudio';
+import TitleHomePage from '../components/TitleHomePage';
 import LastTracks from '../components/LastTracks';
 import formatTime from '../utils/formatTime';
-import lightShadow2 from '../utils/lightShadow2'
-import MenuDesktop from '../components/MenuDesktop';
+import lightShadow2 from '../utils/lightShadow2';
+import { useResponsive } from '../hooks/useResponsive';
 
 export default function HomePage() {
+  const { isMobile, isTablet, isDesktop } = useResponsive();
   const { track, progress, emission } = useAudio();
 
   if (!track) return null;
@@ -18,15 +19,8 @@ export default function HomePage() {
   const progressPercent = Math.min(progress * 100, 100);
   const elapsed = track.length * progress;
 
-  // const lightShadow2 = `
-  // 0px 2px 4px -1px rgba(255,255,255,0.3),
-  // 0px 4px 5px 0px rgba(255,255,255,0.2),
-  // 0px 1px 10px 0px rgba(255,255,255,0.2)
-  // `;
-
   return (
     <>
-      <MenuDesktop />
       <Box
         sx={{
           px: 3,
@@ -39,7 +33,7 @@ export default function HomePage() {
       >
         <Grid
           container
-          spacing={6}
+          spacing={{ xs: 2, md: 6 }}
           sx={{
             backgroundColor: 'white',
             maxWidth: 900,
@@ -51,6 +45,7 @@ export default function HomePage() {
         >
           {/* LEFT */}
           <Grid size={{ xs: 12, md: 6 }} sx={{ minWidth: 0 }}>
+            {!isDesktop && <TitleHomePage />}
             <Stack
               direction="column"
               spacing={1}
@@ -161,29 +156,8 @@ export default function HomePage() {
 
           {/* RIGHT */}
           <Grid size={{ xs: 12, md: 6 }} sx={{ minWidth: 0 }}>
-            <Typography
-              sx={{
-                color: 'var(--color_05)',
-                fontFamily: 'var(--font_01)',
-                fontSize: 'x-large',
-                fontWeight: 'bold',
-                textAlign: 'center',
-              }}
-            >
-              RADIO FACE B
-            </Typography>
-            <Typography
-              sx={{
-                color: 'var(--color_05)',
-                fontFamily: 'var(--font_02)',
-                fontSize: 'large',
-                fontWeight: 'bold',
-                textAlign: 'center',
-              }}
-            >
-              groove, chill, unexpected
-            </Typography>
-            <Divider sx={{ my: 2 }} />
+            {!isMobile && !isTablet && <TitleHomePage />}
+
             <Box
               sx={{
                 width: '100%',

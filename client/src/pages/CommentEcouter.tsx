@@ -1,10 +1,8 @@
 import { Box, Typography } from '@mui/material';
-import MenuDesktop from '../components/MenuDesktop';
 
 export default function CommentEcouter() {
   return (
     <>
-      <MenuDesktop />
       <Box
         sx={{
           backgroundColor: 'black',

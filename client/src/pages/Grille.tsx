@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { Grid, Box, Stack, Button, ButtonGroup, Typography } from '@mui/material';
-import MenuDesktop from '../components/MenuDesktop';
 import Divider from '@mui/material/Divider';
 import { getScheduleByDay } from '../utils/getScheduleByDay';
 import EmissionBlock from '../components/EmissionBlock';
@@ -25,7 +24,6 @@ export default function Grille() {
 
   return (
     <Box>
-      <MenuDesktop />
       {/* MENU JOURS */}
       <Stack
         direction="row"
@@ -39,15 +37,6 @@ export default function Grille() {
           zIndex: 1300,
         }}
       >
-        {/* <Typography
-          sx={{
-            fontFamily: 'var(--font_01)',
-            color: 'white',
-            pr: 2,
-          }}
-        >
-          LA GRILLE &#x3E;
-        </Typography> */}
         <ButtonGroup
           variant="text"
           aria-label="Menu Grille"
