@@ -7,6 +7,7 @@ import LastTracks from '../components/LastTracks';
 import formatTime from '../utils/formatTime';
 import lightShadow2 from '../utils/lightShadow2';
 import { useResponsive } from '../hooks/useResponsive';
+import RainbowBg from '../assets/images/rainbow_background.jpg';
 
 export default function HomePage() {
   const { isMobile, isTablet, isDesktop } = useResponsive();
@@ -20,7 +21,15 @@ export default function HomePage() {
   const elapsed = track.length * progress;
 
   return (
-    <>
+    <Box
+      sx={{
+        width: '100%',
+        backgroundImage: `url(${RainbowBg})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+      }}
+    >
       <Box
         sx={{
           px: 3,
@@ -216,6 +225,6 @@ export default function HomePage() {
           </Grid>
         </Grid>
       </Box>
-    </>
+    </Box>
   );
 }

@@ -5,19 +5,20 @@ import { ExpandLess, ExpandMore } from '@mui/icons-material';
 import { VolumeUp, VolumeOff } from '@mui/icons-material';
 import { useAudio } from '../hooks/useAudio';
 import { useState } from 'react';
+import { useResponsive } from '../hooks/useResponsive';
 import ExpandedPlayer from './ExpandedPlayer';
 
 export default function FooterPlayer() {
-  const { isPlaying, play, stop, track, setVolume, volume, toggleMute, } = useAudio();
+  const { isPlaying, play, stop, track, setVolume, volume, toggleMute } = useAudio();
   const [open, setOpen] = useState(false);
 
+  const { isMobile } = useResponsive();
 
   if (!track) return null;
 
   return (
     <>
       <Box
-        
         sx={{
           position: 'fixed',
           bottom: 0,
@@ -78,20 +79,20 @@ export default function FooterPlayer() {
             >
               ● EN DIRECT
             </Typography>
-
-            <Typography
-              variant="body2"
-              sx={{
-                color: 'white',
-                whiteSpace: 'nowrap',
-                overflow: 'hidden',
-                textOverflow: 'ellipsis',
-              }}
-            >
-              {track.author} — {track.title}
-            </Typography>
+            {!isMobile && (
+              <Typography
+                variant="body2"
+                sx={{
+                  color: 'white',
+                  whiteSpace: 'nowrap',
+                  overflow: 'hidden',
+                  textOverflow: 'ellipsis',
+                }}
+              >
+                {track.author} — {track.title}
+              </Typography>
+            )}
           </Box>
-
           {/* ▶️ CENTER : PLAY */}
           <Box
             sx={{
@@ -127,7 +128,7 @@ export default function FooterPlayer() {
             </IconButton>
           </Box>
 
-          {/* RIGHT (vide pour équilibre) */}
+          {/* RIGHT */}
           <Box
             sx={{
               flex: 1,
@@ -151,36 +152,40 @@ export default function FooterPlayer() {
             >
               {open ? <ExpandMore /> : <ExpandLess />}
             </IconButton>
-            <Stack direction="row"
+            {!isMobile && (
+            <Stack
+              direction="row"
               spacing={1}
               sx={{
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}>
-            <IconButton
-              onClick={(e) => {
-                e.stopPropagation();
-                toggleMute();
+                justifyContent: 'center',
+                alignItems: 'center',
               }}
-              sx={{ color: 'white' }}
             >
-              {volume === 0 ? <VolumeOff /> : <VolumeUp />}
-            </IconButton>
+              <IconButton
+                onClick={(e) => {
+                  e.stopPropagation();
+                  toggleMute();
+                }}
+                sx={{ color: 'white' }}
+              >
+                {volume === 0 ? <VolumeOff /> : <VolumeUp />}
+              </IconButton>
 
-            {/* 🎚️ SLIDER */}
-            <Slider
-              value={volume * 100}
-              onChange={(_, value) => {
-                const v = (value as number) / 100;
-                setVolume(v);
-              }}
-              size="small"
-              sx={{
-                width: 90,
-                color: 'white',
-              }}
-            />
-            </Stack>
+              {/* 🎚️ SLIDER */}
+              
+              <Slider
+                value={volume * 100}
+                onChange={(_, value) => {
+                  const v = (value as number) / 100;
+                  setVolume(v);
+                }}
+                size="small"
+                sx={{
+                  width: 90,
+                  color: 'white',
+                }}
+              />
+            </Stack>)}
           </Box>
         </Box>
       </Box>

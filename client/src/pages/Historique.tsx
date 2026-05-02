@@ -22,7 +22,20 @@ export default function Historique() {
             my: 3,
             borderRadius: 3,
             background: 'white',
-            boxShadow: { xs: 'none', sm: 3 },
+            boxShadow: { xs: 'none', sm: 6 },
+
+             animation: 'contentFade 1s ease',
+
+            '@keyframes contentFade': {
+              from: {
+                opacity: 0,
+                transform: 'translateY(8px)',
+              },
+              to: {
+                opacity: 1,
+                transform: 'translateY(0)',
+              },
+            },
           }}
         >
           <Typography sx={{
@@ -33,7 +46,7 @@ export default function Historique() {
             textAlignLast: 'center',
             mb: 2,
           }}>
-            C'ETAIT QUOI CE TITRE ?
+            C'ÉTAIT QUOI CE TITRE ?
           </Typography>
           <HistoryTrack />
         </Box>

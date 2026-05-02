@@ -130,6 +130,7 @@ export default function HistoryTracks() {
         border: '1px dashed #444',
         borderRadius: 2,
         p: 2,
+        transition: 'all 300ms ease',
       }}
     >
       {/* 🎛 MODE SWITCH */}
@@ -148,7 +149,7 @@ export default function HistoryTracks() {
               onClick={() => setMode('live')}
               color="historyBtn"
             >
-              🔴 Derniers Titres
+              Derniers Titres
             </Button>
 
             <Button

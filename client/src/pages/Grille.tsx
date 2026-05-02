@@ -120,7 +120,7 @@ export default function Grille() {
           sx={{
             backgroundColor: 'white',
             maxWidth: '900px',
-            mt: 2,
+            mt: 3,
             mb: '120px',
             mx: 2,
             p: 3,
