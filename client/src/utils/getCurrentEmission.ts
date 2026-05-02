@@ -1,33 +1,51 @@
-// client/src/utils/getCurrentEmission.ts
 import { SCHEDULE } from "../config/schedule";
 import { EMISSIONS } from "../config/emissions";
+
+const toMinutes = (time: string): number => {
+  const [h, m] = time.split(":").map(Number);
+  return h * 60 + m;
+};
 
 export const getCurrentEmission = () => {
   const now = new Date();
 
   const day = now.getDay();
+  const prevDay = (day + 6) % 7;
+
   const currentMinutes = now.getHours() * 60 + now.getMinutes();
 
+  const matches = [];
+
   for (const block of SCHEDULE) {
-    if (!block.days.includes(day)) continue;
+    const start = toMinutes(block.start);
+    const end = toMinutes(block.end);
+    const isOvernight = end < start;
 
-    const [sh, sm] = block.start.split(":").map(Number);
-    const [eh, em] = block.end.split(":").map(Number);
+    // 🟢 CAS 1 : bloc du jour actuel
+    if (block.days.includes(day)) {
+      const isMatch = isOvernight
+        ? currentMinutes >= start || currentMinutes <= end
+        : currentMinutes >= start && currentMinutes <= end;
 
-    const start = sh * 60 + sm;
-    const end = eh * 60 + em;
-
-    // 🔥 gestion minuit
-    if (end < start) {
-      if (currentMinutes >= start || currentMinutes <= end) {
-        return block.emission;
+      if (isMatch) {
+        matches.push(block);
       }
-    } else {
-      if (currentMinutes >= start && currentMinutes <= end) {
-        return block.emission;
+    }
+
+    // 🔵 CAS 2 : bloc du jour précédent (ONLY overnight blocks)
+    else if (block.days.includes(prevDay) && end < start) {
+      if (currentMinutes <= end) {
+        matches.push(block);
       }
     }
   }
 
-  return EMISSIONS.DEFAULT;
+  if (matches.length === 0) {
+    return EMISSIONS.DEFAULT;
+  }
+
+  // priorité : dernier start
+  matches.sort((a, b) => toMinutes(a.start) - toMinutes(b.start));
+
+  return matches.at(-1)!.emission;
 };
