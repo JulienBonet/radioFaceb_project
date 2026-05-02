@@ -50,7 +50,25 @@ export default function EmissionBlock({ block }: { block: ScheduleBlock }) {
         </Typography>
 
         {/* COLLAPSE */}
-        <Collapse in={open} timeout="auto" unmountOnExit>
+        <Collapse
+          in={open}
+          timeout={300}
+          sx={{
+            '& .MuiCollapse-wrapperInner': {
+              animation: open ? 'fadeIn 0.3s ease' : 'none',
+            },
+            '@keyframes fadeIn': {
+              from: {
+                opacity: 0,
+                transform: 'translateY(-5px)',
+              },
+              to: {
+                opacity: 1,
+                transform: 'translateY(0)',
+              },
+            },
+          }}
+        >
           <Stack
             sx={{
               border: '1px dashed white',
@@ -79,7 +97,7 @@ export default function EmissionBlock({ block }: { block: ScheduleBlock }) {
           sx={{
             color: 'white',
             transform: open ? 'rotate(180deg)' : 'rotate(0deg)',
-            transition: '0.3s',
+            transition: 'transform 0.35s cubic-bezier(0.22, 1, 0.36, 1)',
           }}
         >
           <ExpandMoreIcon />
