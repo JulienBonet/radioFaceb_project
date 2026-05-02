@@ -5,6 +5,7 @@ import Divider from '@mui/material/Divider';
 import { useAudio } from '../hooks/useAudio';
 import LastTracks from '../components/LastTracks';
 import formatTime from '../utils/formatTime';
+import lightShadow2 from '../utils/lightShadow2'
 import MenuDesktop from '../components/MenuDesktop';
 
 export default function HomePage() {
@@ -17,11 +18,11 @@ export default function HomePage() {
   const progressPercent = Math.min(progress * 100, 100);
   const elapsed = track.length * progress;
 
-  const lightShadow2 = `
-  0px 2px 4px -1px rgba(255,255,255,0.3),
-  0px 4px 5px 0px rgba(255,255,255,0.2),
-  0px 1px 10px 0px rgba(255,255,255,0.2)
-  `;
+  // const lightShadow2 = `
+  // 0px 2px 4px -1px rgba(255,255,255,0.3),
+  // 0px 4px 5px 0px rgba(255,255,255,0.2),
+  // 0px 1px 10px 0px rgba(255,255,255,0.2)
+  // `;
 
   return (
     <>

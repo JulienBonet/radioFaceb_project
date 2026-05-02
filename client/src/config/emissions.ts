@@ -6,6 +6,7 @@ export type EmissionConfig = {
   image: string;
   schedule: string;
   needsLightShadow: boolean;
+  styles: string;
 };
 
 export const EMISSIONS: Record<string, EmissionConfig> = {
@@ -15,6 +16,7 @@ export const EMISSIONS: Record<string, EmissionConfig> = {
     image: '/images/emissions/GROOVE_WAKE_UP.jpg',
     schedule: '06h30 - 09h30',
     needsLightShadow: false,
+    styles: '• 80s • 90s • soul • funk • R&B • pop • rock • disco • reggae • world •',
   },
 
   MORNING_CHILL: {
@@ -23,6 +25,7 @@ export const EMISSIONS: Record<string, EmissionConfig> = {
     image: '/images/emissions/MORNING_CHILL.jpg',
     schedule: '06h30 - 09h30',
     needsLightShadow: false,
+    styles: '• blues • jazz • gospel • reggae • dub • downtempo • soul • funk • hiphop • folk •',
   },
 
   GROOVY_LUNCH: {
@@ -31,6 +34,7 @@ export const EMISSIONS: Record<string, EmissionConfig> = {
     image: '/images/emissions/GROOVY_LUNCH.jpg',
     schedule: '11h30 - 13h30',
     needsLightShadow: false,
+    styles: '• soul • funk • R&B • hiphop • rock • pop • reggae • electro • afro • latino •',
   },
 
   NAP_CHILL: {
@@ -39,6 +43,7 @@ export const EMISSIONS: Record<string, EmissionConfig> = {
     image: '/images/emissions/NAP_CHILL.jpg',
     schedule: '13h30 - 15h30',
     needsLightShadow: false,
+    styles: '• soul • jazz • dub • downtempo • reggae • folk • world • musique classique •',
   },
 
   GROOVY_EVENING: {
@@ -47,6 +52,7 @@ export const EMISSIONS: Record<string, EmissionConfig> = {
     image: '/images/emissions/GROOVY_EVENING.jpg',
     schedule: '15h30 - 20h30',
     needsLightShadow: false,
+    styles: '• hiphop • funk • soul • rock • pop • afro • reggae • latino • folk • electro •',
   },
 
   GROOVE_PARTY: {
@@ -55,6 +61,7 @@ export const EMISSIONS: Record<string, EmissionConfig> = {
     image: '/images/emissions/GROOVE_PARTY.jpg',
     schedule: '20h30 - 22h30',
     needsLightShadow: false,
+    styles: '• disco • house • funk • soul • rock • hiphop • ragga • afro • latino •',
   },
 
   TROPIK_GROOVE: {
@@ -63,6 +70,7 @@ export const EMISSIONS: Record<string, EmissionConfig> = {
     image: '/images/emissions/TROPIK_GROOVE.jpg',
     schedule: '20h30 - 22h30',
     needsLightShadow: false,
+    styles: '• salsa • rumba • cumbia • samba • biguine • afro • ragga • oriental •',
   },
 
   WOLF_HOUR: {
@@ -71,6 +79,7 @@ export const EMISSIONS: Record<string, EmissionConfig> = {
     image: '/images/emissions/WOLF_HOUR_01.jpg',
     schedule: '22h30 - 00h30',
     needsLightShadow: true,
+    styles: '• techno • electro • hiphop • dub • rock • cold wave • punk • soul • funk •',
   },
 
   SLEEPY_NIGHT: {
@@ -79,22 +88,25 @@ export const EMISSIONS: Record<string, EmissionConfig> = {
     image: '/images/emissions/SLEEPY_NIGHT_01.jpg',
     schedule: '00h30 - 06h30',
     needsLightShadow: true,
+    styles: '• downtempo • soul • jazz • dub • reggae • folk • world • musique classique •',
   },
 
   WEEKEND_SATURDAY: {
-    name: 'WEEK END UPSIDE DOWN',
-    background_color: 'var(--color_01)',
+    name: 'GROOV|WEEKEND',
+    background_color: 'linear-gradient(90deg, var(--color_02), var(--color_01))',
     image: '/images/emissions/WEEK_END_Upside_Down.jpg',
     schedule: '09h30 - 20h30',
     needsLightShadow: false,
+    styles: 'Face B passe tout son GrOOve au shaker et vous le sert upside down',
   },
 
   SATURDAY_PARTY: {
-    name: 'ZE BIG PARTY',
+    name: 'BIG PARTY',
     background_color: 'var(--color_03)',
     image: '/images/emissions/Saturday_Big_Party.jpg',
     schedule: '20h30 - 01h30',
     needsLightShadow: false,
+    styles: '• disco • house • funk • soul • rock • hiphop • ragga • salsa • rumba • cumbia • samba • afro • ragga • oriental •',
   },
 
   SATURDAY_WOLF_HOUR: {
@@ -103,6 +115,7 @@ export const EMISSIONS: Record<string, EmissionConfig> = {
     image: '/images/emissions/WOLF_HOUR_01.jpg',
     schedule: '01h30 - 03h30',
     needsLightShadow: false,
+    styles: '• techno • electro • minimale • hiphop • jungle • dub • rock • cold wave • dark wave • punk • soul • funk •',
   },
 
   SLEEPY_NIGHT_SATURDAY: {
@@ -111,14 +124,16 @@ export const EMISSIONS: Record<string, EmissionConfig> = {
     image: '/images/emissions/SLEEPY_NIGHT_01.jpg',
     schedule: '03h30 - 06h30',
     needsLightShadow: true,
+    styles: '• downtempo • soul • jazz • dub • reggae • folk • world • musique classique •',
   },
 
   WEEKEND_SUNDAY: {
-    name: 'EASY SUNDAY',
-    background_color: 'var(--color_01)',
-    image: '/images/emissions/WEEK_END_Upside_Down.jpg',
+    name: 'GROOVY SUNDAY',
+    background_color: 'linear-gradient(90deg, var(--color_02), var(--color_01))',
+    image: '/images/emissions/EASY_SUNDAY.jpg',
     schedule: '09h30 - 20h30',
     needsLightShadow: false,
+    styles: 'Face B passe tout son GrOOve au shaker et vous le sert upside down',
   },
 
   DEFAULT: {
@@ -127,5 +142,6 @@ export const EMISSIONS: Record<string, EmissionConfig> = {
     image: '/images/emissions/logo-FACEB-default.jpg',
     schedule: '❤️ DU GROOVE ET DU LOVE',
     needsLightShadow: false,
+    styles: 'Groove, Chill & unexpected',
   },
 };

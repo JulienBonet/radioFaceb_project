@@ -11,7 +11,7 @@ export type ScheduleBlock = {
 export const SCHEDULE: ScheduleBlock[] = [
   // 🟢 semaine (lundi → vendredi)
   {
-    days: [1, 2, 3, 4, 5],
+    days: [0, 1, 2, 3, 4, 5, 6],
     start: '06:30',
     end: '09:30',
     emission: EMISSIONS.GROOVE_WAKE_UP,
@@ -62,14 +62,14 @@ export const SCHEDULE: ScheduleBlock[] = [
 
   // 🌙 nuit semaine (cross midnight OK)
   {
-    days: [1, 2, 3, 4, 5],
+    days: [0, 1, 2, 3, 4, 5],
     start: '22:30',
     end: '00:30',
     emission: EMISSIONS.WOLF_HOUR,
   },
 
   {
-    days: [1, 2, 3, 4, 5],
+    days: [0, 1, 2, 3, 4, 5],
     start: '00:30',
     end: '06:30',
     emission: EMISSIONS.SLEEPY_NIGHT,

@@ -18,7 +18,7 @@ const MenuDesktop = () => {
       }}
     >
       <ButtonGroup
-        variant="text" // important si tu veux voir les bordures
+        variant="text"
         aria-label="Menu principal"
         sx={{
           '& .MuiButton-root': {
