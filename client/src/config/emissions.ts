@@ -23,7 +23,7 @@ export const EMISSIONS: Record<string, EmissionConfig> = {
     name: 'MORNING CHILL',
     background_color: 'var(--color_02)',
     image: '/images/emissions/MORNING_CHILL.jpg',
-    schedule: '06h30 - 09h30',
+    schedule: '09h30 - 11h30',
     needsLightShadow: false,
     styles: '• blues • jazz • gospel • reggae • dub • downtempo • soul • funk • hiphop • folk •',
   },
