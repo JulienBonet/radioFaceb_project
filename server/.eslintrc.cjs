@@ -1,23 +1,40 @@
 module.exports = {
   root: true,
+
   env: {
     node: true,
-    es2021: true,
+    es2022: true,
   },
+
   parserOptions: {
     ecmaVersion: 'latest',
     sourceType: 'module',
   },
+
   extends: [
-    '../.eslintrc.cjs',
+    'eslint:recommended',
+    'plugin:security/recommended',
     'plugin:prettier/recommended',
   ],
+
   plugins: ['prettier'],
+
   rules: {
+    // style
+    'prettier/prettier': 'error',
+
+    // backend pragmatique
     'consistent-return': 'off',
     'no-return-await': 'off',
     'handle-callback-err': 'warn',
-    'global-require': 'off',
-    'prettier/prettier': 'error',
+
+    // utile avec Express
+    'no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
+
+    // ESM friendly
+    'no-undef': 'off',
+
+    // debug
+    'no-console': 'off',
   },
 };
