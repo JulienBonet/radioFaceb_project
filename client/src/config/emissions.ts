@@ -30,7 +30,7 @@ export const EMISSIONS: Record<string, EmissionConfig> = {
 
   GROOVY_LUNCH: {
     name: 'GROOVY LUNCH',
-    background_color: 'var(--color_01)',
+    background_color: 'linear-gradient(90deg, var(--color_03), var(--color_01))',
     image: '/images/emissions/GROOVY_LUNCH.jpg',
     schedule: '11h30 - 13h30',
     needsLightShadow: false,
@@ -39,7 +39,7 @@ export const EMISSIONS: Record<string, EmissionConfig> = {
 
   NAP_CHILL: {
     name: 'NAP CHILL',
-    background_color: 'var(--color_02)',
+    background_color: 'linear-gradient(10deg, var(--color_02), var(--color_06))',
     image: '/images/emissions/NAP_CHILL.jpg',
     schedule: '13h30 - 15h30',
     needsLightShadow: false,
@@ -84,8 +84,8 @@ export const EMISSIONS: Record<string, EmissionConfig> = {
 
   SLEEPY_NIGHT: {
     name: 'SLEEPY NIGHT',
-    background_color: 'var(--color_02)',
-    image: '/images/emissions/SLEEPY_NIGHT_01.jpg',
+    background_color: 'var(--color_06)',
+    image: '/images/emissions/SLEEPY_NIGHT_04.jpg',
     schedule: '00h30 - 06h30',
     needsLightShadow: true,
     styles: '• downtempo • soul • jazz • dub • reggae • folk • world • musique classique •',
