@@ -15,8 +15,9 @@
 
 body {
   background-color: var(--color_main_bg);
+}
 
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+html, body, #root {
+  overflow-x: hidden;
+  width: 100%;
 }

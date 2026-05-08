@@ -9,7 +9,7 @@ import { useResponsive } from '../hooks/useResponsive';
 import ExpandedPlayer from './ExpandedPlayer';
 
 export default function FooterPlayer() {
-  const { isPlaying, play, stop, track, setVolume, volume, toggleMute } = useAudio();
+  const { isPlaying, play, stop, track, setVolume, volume, toggleMute, audioMode } = useAudio();
   const [open, setOpen] = useState(false);
 
   const { isMobile } = useResponsive();
@@ -58,10 +58,41 @@ export default function FooterPlayer() {
             display: 'flex',
             alignItems: 'center',
             width: '100%',
-            // maxWidth: 900,
           }}
         >
-          {/* 🟠 LEFT : INFOS */}
+          {/* ---- MIXTAPE OVERLAY ---- */}
+          {audioMode === 'mixtape' && (
+            <Box
+              sx={{
+                position: 'absolute',
+                inset: 0,
+                zIndex: 5,
+                background: 'rgba(0,0,0,0.72)',
+                backdropFilter: 'blur(6px)',
+
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                flexDirection: 'column',
+
+                color: 'white',
+              }}
+            >
+              <Typography
+                sx={{
+                  fontFamily: 'var(--font_04)',
+                  fontSize: '0.9rem',
+                  opacity: 0.8,
+                }}
+              >
+                Radio paused while listening to mixtape
+              </Typography>
+            </Box>
+          )}
+
+          {/* ---- PLAYER ---- */}
+
+          {/* RIGHT */}
           <Box
             sx={{
               flex: 1,
@@ -153,39 +184,40 @@ export default function FooterPlayer() {
               {open ? <ExpandMore /> : <ExpandLess />}
             </IconButton>
             {!isMobile && (
-            <Stack
-              direction="row"
-              spacing={1}
-              sx={{
-                justifyContent: 'center',
-                alignItems: 'center',
-              }}
-            >
-              <IconButton
-                onClick={(e) => {
-                  e.stopPropagation();
-                  toggleMute();
-                }}
-                sx={{ color: 'white' }}
-              >
-                {volume === 0 ? <VolumeOff /> : <VolumeUp />}
-              </IconButton>
-
-              {/* 🎚️ SLIDER */}
-              
-              <Slider
-                value={volume * 100}
-                onChange={(_, value) => {
-                  const v = (value as number) / 100;
-                  setVolume(v);
-                }}
-                size="small"
+              <Stack
+                direction="row"
+                spacing={1}
                 sx={{
-                  width: 90,
-                  color: 'white',
+                  justifyContent: 'center',
+                  alignItems: 'center',
                 }}
-              />
-            </Stack>)}
+              >
+                <IconButton
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    toggleMute();
+                  }}
+                  sx={{ color: 'white' }}
+                >
+                  {volume === 0 ? <VolumeOff /> : <VolumeUp />}
+                </IconButton>
+
+                {/* 🎚️ SLIDER */}
+
+                <Slider
+                  value={volume * 100}
+                  onChange={(_, value) => {
+                    const v = (value as number) / 100;
+                    setVolume(v);
+                  }}
+                  size="small"
+                  sx={{
+                    width: 90,
+                    color: 'white',
+                  }}
+                />
+              </Stack>
+            )}
           </Box>
         </Box>
       </Box>

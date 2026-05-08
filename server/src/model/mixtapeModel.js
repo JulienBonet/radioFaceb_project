@@ -2,7 +2,7 @@ import db from '../../db/db.js';
 
 export const getAllMixtapes = async () => {
   const [rows] = await db.query(`
-    SELECT m.*, g.name AS genre_name
+    SELECT m.*, g.name AS genre_name, g.color as genre_color
     FROM mixtape m
     JOIN genre g ON m.genre_id = g.id
     ORDER BY m.created_at DESC
@@ -12,7 +12,10 @@ export const getAllMixtapes = async () => {
 
 export const getMixtapeById = async (id) => {
   const [[row]] = await db.query(
-    `SELECT * FROM mixtape WHERE id = ?`,
+    `SELECT m.*, g.name AS genre_name, g.color as genre_color
+    FROM mixtape m
+    JOIN genre g ON m.genre_id = g.id
+    WHERE m.id = ?`,
     [id]
   );
   return row;

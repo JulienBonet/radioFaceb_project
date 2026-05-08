@@ -6,6 +6,7 @@ import Contact from "../pages/Contact";
 import Historique from "../pages/Historique";
 import Mixtapes from "../pages/Mixtapes";
 import Presentation from "../pages/Presentation";
+import MixtapeDetail from "../pages/MixtapeDetail";
 
 export default function Router() {
   return (
@@ -17,6 +18,7 @@ export default function Router() {
       <Route path="/historique" element={<Historique />} />
       <Route path="/mixtapes" element={<Mixtapes />} />
       <Route path="/presentation" element={<Presentation />} />
+      <Route path="/mixtapes/:id" element={<MixtapeDetail />} />
     </Routes>
   );
 }

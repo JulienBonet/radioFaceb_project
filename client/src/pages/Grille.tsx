@@ -99,12 +99,17 @@ export default function Grille() {
                   textTransform: 'none',
                   color: isActive ? 'var(--color_05)' : '#fff',
                   backgroundColor: isActive ? '#fff' : 'transparent',
-                  borderRadius: 0,
+                  borderRadius: 1,
 
                   // ⭐ animation cascade
                   animation: 'fadeSlide 0.4s ease-out',
                   animationFillMode: 'both',
                   animationDelay: `${index * 40}ms`,
+
+                  transition: '0.2s',
+                  '&:hover': {
+                    opacity: 0.8,
+                  },
                 }}
               >
                 {day.label}

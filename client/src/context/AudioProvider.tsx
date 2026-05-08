@@ -1,12 +1,13 @@
 // client/src/context/AudioProvider.tsx
-import { useEffect, useRef, useState } from "react";
-import { AudioContext } from "./AudioContext";
-import type { ReactNode } from "react";
-import type { Track } from "../types/audio";
-import { getCurrentEmission } from "../utils/getCurrentEmission";
+import { useEffect, useRef, useState } from 'react';
+import { AudioContext } from './AudioContext';
+import type { ReactNode } from 'react';
+import type { Track } from '../types/audio';
+import { getCurrentEmission } from '../utils/getCurrentEmission';
 
 export const AudioProvider = ({ children }: { children: ReactNode }) => {
-  const STREAM_URL = "http://ecmanager6.pro-fhi.net:1400/stream";
+  const STREAM_URL = 'http://ecmanager6.pro-fhi.net:1400/stream';
+  type AudioMode = 'radio' | 'mixtape' | null;
 
   const audioRef = useRef<HTMLAudioElement>(new Audio());
 
@@ -15,13 +16,14 @@ export const AudioProvider = ({ children }: { children: ReactNode }) => {
   const [progress, setProgress] = useState(0);
   const [volume, setVolume] = useState(1);
   const [prevVolume, setPrevVolume] = useState(1);
+  const [audioMode, setAudioMode] = useState<AudioMode>(null);
 
   const [emission, setEmission] = useState(getCurrentEmission());
 
   const createAudio = () => {
     const audio = new Audio();
     audio.src = `${STREAM_URL}?t=${Date.now()}`; // 🔥 anti-buffer cache
-    audio.preload = "none";
+    audio.preload = 'none';
     return audio;
   };
 
@@ -34,14 +36,16 @@ export const AudioProvider = ({ children }: { children: ReactNode }) => {
     audioRef.current.volume = volume;
 
     await audioRef.current.play();
-
+    setAudioMode('radio');
     setIsPlaying(true);
   };
 
   const stop = () => {
+    console.log('STOP RADIO');
+    
     if (audioRef.current) {
       audioRef.current.pause();
-      audioRef.current.src = "";
+      audioRef.current.src = '';
       audioRef.current.load();
     }
 
@@ -61,7 +65,7 @@ export const AudioProvider = ({ children }: { children: ReactNode }) => {
   useEffect(() => {
     const loadTrack = async () => {
       const res = await fetch(
-        "https://ecmanager6.pro-fhi.net:1390/api/v2/history/?limit=1&server=1"
+        'https://ecmanager6.pro-fhi.net:1390/api/v2/history/?limit=1&server=1',
       );
       const data = await res.json();
       setTrack(data.results[0]);
@@ -111,6 +115,8 @@ export const AudioProvider = ({ children }: { children: ReactNode }) => {
         setVolume,
         toggleMute,
         emission,
+        audioMode,
+        setAudioMode,
       }}
     >
       {children}

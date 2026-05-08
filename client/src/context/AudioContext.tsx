@@ -1,6 +1,6 @@
 // client/src/context/AudioContext.tsx
-import { createContext } from "react";
-import type { EmissionConfig } from "../config/emissions";
+import { createContext } from 'react';
+import type { EmissionConfig } from '../config/emissions';
 
 export interface Track {
   title: string;
@@ -22,6 +22,8 @@ export interface AudioContextType {
   volume: number;
   setVolume: (v: number) => void;
   toggleMute: () => void;
+  audioMode: 'radio' | 'mixtape' | null;
+  setAudioMode: React.Dispatch<React.SetStateAction<'radio' | 'mixtape' | null>>;
   emission: EmissionConfig;
 }
 
