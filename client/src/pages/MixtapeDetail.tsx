@@ -76,26 +76,81 @@ export default function MixtapeDetail() {
         {/* COVER */}
         <Stack
           sx={{
+            position: 'relative',
+            overflow: 'hidden',
+
             width: '100%',
             justifyContent: 'center',
             alignItems: 'center',
-            backgroundColor: `${mixtape.genre_color}`,
-            py: 1,
+
+            backgroundColor: mixtape.genre_color,
+
+            py: 3,
+
             borderTopLeftRadius: 5,
             borderTopRightRadius: 5,
           }}
         >
+          {/* SOUND WAVES (STATIC) */}
+          <Box
+            sx={{
+              position: 'absolute',
+              inset: 0,
+
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+
+              opacity: 0.8,
+              zIndex: 1,
+            }}
+          >
+            <Box
+              sx={{
+                width: '95%',
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+              }}
+            >
+              {[...Array(40)].map((_, i) => {
+                const height = 20 + ((i * 37) % 60);
+
+                return (
+                  <Box
+                    key={i}
+                    sx={{
+                      width: '3px',
+                      height: `${height}px`,
+                      backgroundColor: 'rgba(255,255,255,0.9)',
+                      borderRadius: '999px',
+                    }}
+                  />
+                );
+              })}
+            </Box>
+          </Box>
+
+          {/* COVER */}
           <Box
             component="img"
             src={`${CLOUDINARY_BASE_URL}/radio/mixtapes/${mixtape.cover}`}
             sx={{
+              position: 'relative',
+              zIndex: 2,
+
               width: '100%',
               maxWidth: '300px',
+
               borderRadius: 2,
               objectFit: 'cover',
+
+              boxShadow: '0 10px 40px rgba(0,0,0,0.35)',
             }}
           />
         </Stack>
+
+        {/* --- INFOS CONTENT + PLAYER */}
         <Stack
           spacing={1}
           sx={{
@@ -110,27 +165,34 @@ export default function MixtapeDetail() {
         >
           {/* TITLE + GENRE */}
           <Stack sx={{ alignItems: 'center', justifyContent: 'center' }}>
+
             <Typography
               sx={{
                 fontFamily: 'var(--font_01)',
                 fontSize: 'xx-large',
+                textAlign: 'center',
               }}
             >
               {mixtape.title}
             </Typography>
+
             <Typography
               sx={{
                 fontFamily: 'var(--font_05)',
                 fontSize: 'large',
                 textAlign: 'center',
+                mt: {xs: 2, md: 1},
               }}
             >
               Mixtape: {mixtape.genre_name}
             </Typography>
+
             <Divider sx={{ my: 2, width: '100%' }} />
+
           </Stack>
 
           <Stack spacing={2}>
+
             {/* PRESENTATION */}
             <Typography
               sx={{
