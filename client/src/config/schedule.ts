@@ -62,14 +62,14 @@ export const SCHEDULE: ScheduleBlock[] = [
 
   // 🌙 nuit semaine (cross midnight OK)
   {
-    days: [0, 1, 2, 3, 4, 5,],
+    days: [0, 1, 2, 3, 4, 5],
     start: '22:30',
     end: '00:30',
     emission: EMISSIONS.WOLF_HOUR,
   },
 
   {
-    days: [1, 2, 3, 4, 5, 6],
+    days: [0, 1, 2, 3, 4, 5],
     start: '00:30',
     end: '06:30',
     emission: EMISSIONS.SLEEPY_NIGHT,
@@ -91,16 +91,16 @@ export const SCHEDULE: ScheduleBlock[] = [
     emission: EMISSIONS.SATURDAY_PARTY,
   },
 
-  // 🌙 nuit samedi à dimanche
+  // 🌙 nuit samedi (IMPORTANT : reste en samedi logique radio)
   {
-    days: [0],
+    days: [6],
     start: '01:30',
     end: '03:30',
     emission: EMISSIONS.SATURDAY_WOLF_HOUR,
   },
 
   {
-    days: [0],
+    days: [6],
     start: '03:30',
     end: '06:30',
     emission: EMISSIONS.SLEEPY_NIGHT_SATURDAY,
