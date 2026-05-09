@@ -29,12 +29,16 @@ export default function Mixtapes() {
   }, [mixtapes]);
 
   const filteredMixtapes = useMemo(() => {
+    const query = search.toLowerCase();
+
     return mixtapes.filter((m) => {
       const matchGenre = selectedGenre === 'ALL' || m.genre_name === selectedGenre;
 
       const matchSearch =
-        m.title.toLowerCase().includes(search.toLowerCase()) ||
-        (m.keywords?.some((k) => k.name.toLowerCase().includes(search.toLowerCase())) ?? false);
+        m.title.toLowerCase().includes(query) ||
+        m.presentation.toLowerCase().includes(query) ||
+        m.genre_name.toLowerCase().includes(query) ||
+        m.tracklist.toLowerCase().includes(query);
 
       return matchGenre && matchSearch;
     });

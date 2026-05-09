@@ -295,7 +295,7 @@ export default function MixtapeDetail() {
                 </Stack>
               </Box>
             ) : (
-              <MixtapePlayer platform={mixtape.platform} embedUrl={mixtape.embed_url} />
+              <MixtapePlayer platform={mixtape.platform} embedRef={mixtape.embed_ref} />
             )}
 
             {/* TRACKLIST */}

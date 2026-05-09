@@ -3,16 +3,16 @@ import HearthisPlayer from './HearthisPlayer';
 
 type Props = {
   platform: string;
-  embedUrl: string;
+  embedRef: string;
 };
 
-const MixtapePlayer = ({ platform, embedUrl }: Props) => {
+const MixtapePlayer = ({ platform, embedRef }: Props) => {
   switch (platform) {
     case 'mixcloud':
-      return <MixcloudPlayer feed={embedUrl} />;
+      return <MixcloudPlayer feed={embedRef} />;
 
     case 'hearthis':
-      return <HearthisPlayer trackId={embedUrl} />;
+      return <HearthisPlayer trackId={embedRef} />;
 
     default:
       return null;

@@ -13,15 +13,11 @@ export type Mixtape = {
   tracklist: string;
 
   platform: string;
-  embed_url: string;
+  embed_ref: string;
+  slug: string,
 
   created_at: string;
   updated_at: string;
-
-  keywords?: {
-    id: number;
-    name: string;
-  }[];
 };
 
 export const getAllMixtapes = async (): Promise<Mixtape[]> => {
