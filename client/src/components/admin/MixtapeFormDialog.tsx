@@ -11,6 +11,7 @@ import {
   Stack,
   Switch,
   TextField,
+  Typography,
 } from '@mui/material';
 
 import { useEffect, useState } from 'react';
@@ -30,6 +31,8 @@ import { getAllGenres, type Genre } from '../../api/genre.api';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 
 import { uploadMixtapeCover } from '../../api/upload.api';
+
+import HtmlEditor from '../editor/HtmlEditor';
 
 import { toast } from 'sonner';
 
@@ -175,7 +178,13 @@ const MixtapeFormDialog = ({ open, onClose, onSuccess, mixtape }: Props) => {
         <Stack spacing={2} sx={{ mt: 1 }}>
           {/* COVER */}
 
-          <Box>
+          <Stack
+            sx={{
+              alignItems: 'center',
+              justifyContent: 'center',
+              textAlign: 'center',
+            }}
+          >
             {cover && (
               <Box
                 component="img"
@@ -212,7 +221,7 @@ const MixtapeFormDialog = ({ open, onClose, onSuccess, mixtape }: Props) => {
                 }}
               />
             </Button>
-          </Box>
+          </Stack>
 
           {/* TITLE */}
 
@@ -291,16 +300,33 @@ const MixtapeFormDialog = ({ open, onClose, onSuccess, mixtape }: Props) => {
           />
 
           {/* PRESENTATION */}
+          <Box>
+            <Typography sx={{ mb: 1, pl: 1, fontSize: 'small', fontWeight: 400 }}>
+              Presentation
+            </Typography>
 
+            <Controller
+              name="presentation"
+              control={control}
+              render={({ field }) => (
+                <HtmlEditor value={field.value || ''} onChange={field.onChange} />
+              )}
+            />
+          </Box>
 
           {/* TRACKLIST */}
-          <Controller
-            name="tracklist"
-            control={control}
-            render={({ field }) => (
-              <TextField {...field} label="Tracklist" multiline minRows={6} fullWidth />
-            )}
-          />
+          <Box>
+            <Typography sx={{ mb: 1, pl: 1, fontSize: 'small', fontWeight: 400 }}>
+              Tracklist
+            </Typography>
+            <Controller
+              name="tracklist"
+              control={control}
+              render={({ field }) => (
+                <HtmlEditor value={field.value || ''} onChange={field.onChange} />
+              )}
+            />
+          </Box>
 
           {/* PUBLISHED */}
 

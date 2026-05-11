@@ -194,9 +194,11 @@ export default function MixtapeDetail() {
             <Box
               sx={{
                 fontFamily: 'var(--font_04)',
-                lineHeight: 1.6,
               }}
-              dangerouslySetInnerHTML={{ __html: mixtape.presentation ?? '' }}
+              className="presentation-content"
+              dangerouslySetInnerHTML={{
+                __html: mixtape.presentation ?? '',
+              }}
             />
 
             {/* PLAYER */}
@@ -307,10 +309,15 @@ export default function MixtapeDetail() {
                 Tracklist :
               </Typography>
 
-              <Typography
-                sx={{ fontFamily: 'var(--font_05)' }}
-              >{mixtape.tracklist }
-              </Typography>
+              <Box
+                sx={{
+                  fontFamily: 'var(--font_05)',
+                }}
+                className="presentation-content"
+                dangerouslySetInnerHTML={{
+                  __html: mixtape.tracklist ?? '',
+                }}
+              />
             </Box>
           </Stack>
         </Stack>
