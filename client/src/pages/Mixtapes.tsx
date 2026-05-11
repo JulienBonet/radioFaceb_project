@@ -36,9 +36,9 @@ export default function Mixtapes() {
 
       const matchSearch =
         m.title.toLowerCase().includes(query) ||
-        m.presentation.toLowerCase().includes(query) ||
+        (m.presentation ?? '').toLowerCase().includes(query) ||
         m.genre_name.toLowerCase().includes(query) ||
-        m.tracklist.toLowerCase().includes(query);
+        (m.tracklist ?? '').toLowerCase().includes(query);
 
       return matchGenre && matchSearch;
     });

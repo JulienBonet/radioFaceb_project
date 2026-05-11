@@ -28,6 +28,16 @@ export const getAllMixtapes = async (): Promise<Mixtape[]> => {
   return res.json();
 };
 
+export const getAllPublishedMixtapes = async (): Promise<Mixtape[]> => {
+  const res = await fetch(`${API_URL}/mixtapes/published`);
+
+  if (!res.ok) {
+    throw new Error('Error fetching mixtapes');
+  }
+
+  return res.json();
+};
+
 export const getMixtapeById = async (id: number): Promise<Mixtape> => {
   const res = await fetch(`${API_URL}/mixtapes/${id}`);
 

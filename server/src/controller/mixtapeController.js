@@ -14,6 +14,11 @@ export const getAll = async (req, res) => {
   res.json(data);
 };
 
+export const getAllPublished = async (req, res) => {
+  const data = await model.getAllPublishedMixtapes();
+  res.json(data);
+};
+
 export const getById = async (req, res) => {
   const data = await model.getMixtapeById(req.params.id);
   res.json(data);

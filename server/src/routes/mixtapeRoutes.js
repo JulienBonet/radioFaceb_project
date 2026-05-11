@@ -5,6 +5,7 @@ import * as controller from '../controller/mixtapeController.js';
 const router = Router();
 
 router.get('/', controller.getAll);
+router.get('/published', controller.getAllPublished);
 router.get('/:id', controller.getById);
 router.post('/', controller.create);
 router.put('/:id', controller.update);

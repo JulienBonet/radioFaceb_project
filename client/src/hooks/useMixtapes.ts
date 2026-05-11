@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import type { Mixtape } from "../api/mixtape.api";
-import { getAllMixtapes } from "../api/mixtape.api";
+import { getAllPublishedMixtapes } from "../api/mixtape.api";
 
 export const useMixtapes = () => {
   const [mixtapes, setMixtapes] = useState<Mixtape[]>([]);
@@ -11,7 +11,7 @@ export const useMixtapes = () => {
     const load = async () => {
       try {
         setLoading(true);
-        const data = await getAllMixtapes();
+        const data = await getAllPublishedMixtapes();
         setMixtapes(data);
       } catch (err: unknown) {
         setError(err instanceof Error ? err.message : "Unknown error");

@@ -11,6 +11,21 @@ export const getAllMixtapes = async () => {
   return rows;
 };
 
+export const getAllPublishedMixtapes = async () => {
+  const [rows] = await db.query(`
+    SELECT 
+      m.*,
+      g.name AS genre_name,
+      g.color AS genre_color
+    FROM mixtape m
+    JOIN genre g ON m.genre_id = g.id
+    WHERE m.is_published = 1
+    ORDER BY m.created_at DESC
+  `);
+
+  return rows;
+};
+
 export const getMixtapeById = async (id) => {
   const [[row]] = await db.query(
     `SELECT m.*, g.name AS genre_name, g.color as genre_color
