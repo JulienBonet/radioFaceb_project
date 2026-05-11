@@ -200,6 +200,7 @@ export default function MixtapeDetail() {
                 __html: mixtape.presentation ?? '',
               }}
             />
+            <Divider sx={{ my: 2, width: '100%' }} />
 
             {/* PLAYER */}
             {!playerStarted ? (
