@@ -63,6 +63,8 @@ const AdminMixtapesPage = () => {
       field: 'id',
       headerName: 'ID',
       width: 80,
+      align: 'center',
+      headerAlign: 'center',
     },
 
     {
@@ -75,6 +77,8 @@ const AdminMixtapesPage = () => {
       field: 'genre_name',
       headerName: 'Genre',
       width: 160,
+      align: 'center',
+      headerAlign: 'center',
 
       renderCell: (params) => (
         <Chip
@@ -92,12 +96,52 @@ const AdminMixtapesPage = () => {
       field: 'created_at',
       headerName: 'Créé le',
       width: 180,
+      align: 'center',
+      headerAlign: 'center',
+
+      valueGetter: (value) => value,
+
+      valueFormatter: (value) => {
+        if (!value) return '';
+
+        return new Date(value).toLocaleDateString('fr-FR', {
+          day: '2-digit',
+          month: '2-digit',
+          year: 'numeric',
+          hour: '2-digit',
+          minute: '2-digit',
+        });
+      },
+    },
+
+    {
+      field: 'updated_at',
+      headerName: 'Modifié le',
+      width: 180,
+      align: 'center',
+      headerAlign: 'center',
+
+      valueGetter: (value) => value,
+
+      valueFormatter: (value) => {
+        if (!value) return '';
+
+        return new Date(value).toLocaleDateString('fr-FR', {
+          day: '2-digit',
+          month: '2-digit',
+          year: 'numeric',
+          hour: '2-digit',
+          minute: '2-digit',
+        });
+      },
     },
 
     {
       field: 'is_published',
       headerName: 'Publié',
       width: 120,
+      align: 'center',
+      headerAlign: 'center',
 
       renderCell: (params) => (params.value ? '✅' : '❌'),
     },
@@ -106,11 +150,13 @@ const AdminMixtapesPage = () => {
       field: 'actions',
       headerName: 'Actions',
       width: 140,
+      align: 'center',
+      headerAlign: 'center',
 
       sortable: false,
 
       renderCell: (params) => (
-        <Stack direction="row">
+        <Stack direction="row" sx={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
           <IconButton
             onClick={() => {
               setSelectedMixtape(params.row);
@@ -139,7 +185,7 @@ const AdminMixtapesPage = () => {
           mb: 3,
         }}
       >
-        <Typography variant="h4">Admin Mixtapes</Typography>
+        <Typography sx={{fontFamily: 'var(--font_05)', fontSize: 'xx-large', fontWeight: 'bold'}}>Admin Mixtapes</Typography>
 
         <Button
           variant="contained"
@@ -157,6 +203,7 @@ const AdminMixtapesPage = () => {
         sx={{
           height: 700,
           backgroundColor: 'white',
+          mb: '120px',
         }}
       >
         <DataGrid rows={mixtapes} columns={columns} loading={loading} disableRowSelectionOnClick />
