@@ -165,7 +165,6 @@ export default function MixtapeDetail() {
         >
           {/* TITLE + GENRE */}
           <Stack sx={{ alignItems: 'center', justifyContent: 'center' }}>
-
             <Typography
               sx={{
                 fontFamily: 'var(--font_01)',
@@ -181,26 +180,23 @@ export default function MixtapeDetail() {
                 fontFamily: 'var(--font_05)',
                 fontSize: 'large',
                 textAlign: 'center',
-                mt: {xs: 2, md: 1},
+                mt: { xs: 2, md: 1 },
               }}
             >
               Mixtape: {mixtape.genre_name}
             </Typography>
 
             <Divider sx={{ my: 2, width: '100%' }} />
-
           </Stack>
 
           <Stack spacing={2}>
-
             {/* PRESENTATION */}
-            <Typography
+            <Box
               sx={{
                 fontFamily: 'var(--font_04)',
                 lineHeight: 1.6,
-                pb: 1,
               }}
-              dangerouslySetInnerHTML={{ __html: mixtape.presentation }}
+              dangerouslySetInnerHTML={{ __html: mixtape.presentation ?? '' }}
             />
 
             {/* PLAYER */}
@@ -313,8 +309,8 @@ export default function MixtapeDetail() {
 
               <Typography
                 sx={{ fontFamily: 'var(--font_05)' }}
-                dangerouslySetInnerHTML={{ __html: mixtape.tracklist }}
-              />
+              >{mixtape.tracklist }
+              </Typography>
             </Box>
           </Stack>
         </Stack>

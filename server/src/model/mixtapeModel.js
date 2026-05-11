@@ -1,3 +1,4 @@
+// server/src/model/mixtapeModel.js
 import db from '../../db/db.js';
 
 export const getAllMixtapes = async () => {
@@ -21,22 +22,58 @@ export const getMixtapeById = async (id) => {
   return row;
 };
 
+export const getMixtapeCoverById = async (id) => {
+  const [[row]] = await db.query(
+    `
+    SELECT cover
+    FROM mixtape
+    WHERE id = ?
+    `,
+    [id]
+  );
+
+  return row;
+};
+
 export const createMixtape = async (data) => {
   const {
     title,
+    slug,
     cover,
-    embed_url,
+    embed_ref,
     platform,
     presentation,
     tracklist,
     genre_id,
+    is_published,
   } = data;
 
   const [result] = await db.query(
-    `INSERT INTO mixtape 
-    (title, cover, embed_url, platform, presentation, tracklist, genre_id, is_published)
-    VALUES (?, ?, ?, ?, ?, ?, ?, true)`,
-    [title, cover, embed_url, platform, presentation, tracklist, genre_id]
+    `
+    INSERT INTO mixtape (
+      title,
+      slug,
+      cover,
+      embed_ref,
+      platform,
+      presentation,
+      tracklist,
+      genre_id,
+      is_published
+    )
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+    `,
+    [
+      title,
+      slug,
+      cover,
+      embed_ref,
+      platform,
+      presentation,
+      tracklist,
+      genre_id,
+      is_published,
+    ]
   );
 
   return result.insertId;

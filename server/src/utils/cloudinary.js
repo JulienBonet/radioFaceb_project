@@ -9,12 +9,20 @@ cloudinary.config({
 
 export const uploadBufferToCloudinary = ({ buffer }) => {
   return new Promise((resolve, reject) => {
-    const randomString = Math.random().toString(36).substring(2, 8);
+    const randomString = Math.random()
+      .toString(36)
+      .substring(2, 8);
+
+    const filename = `mixtape_${randomString}.jpg`;
+
+    const publicId = filename.replace('.jpg', '');
 
     const stream = cloudinary.uploader.upload_stream(
       {
         folder: 'radio/mixtapes',
-        public_id: `mixtape_${randomString}`,
+
+        public_id: publicId,
+
         transformation: [
           {
             width: 500,
@@ -24,11 +32,12 @@ export const uploadBufferToCloudinary = ({ buffer }) => {
           },
         ],
       },
+
       (error, result) => {
         if (error) return reject(error);
 
         resolve({
-          public_id: result.public_id,
+          filename,
           url: result.secure_url,
         });
       }
@@ -38,7 +47,18 @@ export const uploadBufferToCloudinary = ({ buffer }) => {
   });
 };
 
-export const deleteFromCloudinary = async ({ public_id }) => {
-  if (!public_id) return;
-  await cloudinary.uploader.destroy(public_id);
+export const deleteFromCloudinary = async ({
+  filename,
+}) => {
+  if (!filename) return;
+
+  if (filename === 'default-mixtape.jpg') {
+    return;
+  }
+
+  const publicId = filename.replace('.jpg', '');
+
+  await cloudinary.uploader.destroy(
+    `radio/mixtapes/${publicId}`
+  );
 };

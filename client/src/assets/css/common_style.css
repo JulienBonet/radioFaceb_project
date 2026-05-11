@@ -22,3 +22,16 @@ html, body, #root {
   overflow-x: hidden;
   width: 100%;
 }
+
+.ProseMirror {
+  outline: none;
+  min-height: 150px;
+}
+
+.ProseMirror strong {
+  font-weight: bold;
+}
+
+.ProseMirror em {
+  font-style: italic;
+}

@@ -7,6 +7,7 @@ import Historique from "../pages/Historique";
 import Mixtapes from "../pages/Mixtapes";
 import Presentation from "../pages/Presentation";
 import MixtapeDetail from "../pages/MixtapeDetail";
+import AdminMixtapes from "../pages/admin/AdminMixtapes"
 
 export default function Router() {
   return (
@@ -19,6 +20,7 @@ export default function Router() {
       <Route path="/mixtapes" element={<Mixtapes />} />
       <Route path="/presentation" element={<Presentation />} />
       <Route path="/mixtapes/:id" element={<MixtapeDetail />} />
+      <Route path="/admin/mixtapes" element={<AdminMixtapes />} />
     </Routes>
   );
 }

@@ -1,21 +1,19 @@
+// client/src/api/mixtape.api.ts
 const API_URL = import.meta.env.VITE_API_URL as string;
 
 export type Mixtape = {
   id: number;
   title: string;
-  presentation: string;
+  slug: string;
   cover: string;
-
+  embed_ref: string;
+  platform: 'mixcloud' | 'hearthis';
+  presentation: string | null;
+  tracklist: string | null;
   genre_id: number;
   genre_name: string;
   genre_color: string;
-
-  tracklist: string;
-
-  platform: string;
-  embed_ref: string;
-  slug: string,
-
+  is_published: boolean;
   created_at: string;
   updated_at: string;
 };
