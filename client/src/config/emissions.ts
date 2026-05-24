@@ -120,7 +120,7 @@ export const EMISSIONS: Record<string, EmissionConfig> = {
 
   SLEEPY_NIGHT_SATURDAY: {
     name: 'SLEEPY NIGHT',
-    background_color: 'var(--color_02)',
+    background_color: 'var(--color_06)',
     image: '/images/emissions/SLEEPY_NIGHT_01.jpg',
     schedule: '03h30 - 06h30',
     needsLightShadow: true,

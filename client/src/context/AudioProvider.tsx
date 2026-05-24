@@ -42,7 +42,7 @@ export const AudioProvider = ({ children }: { children: ReactNode }) => {
 
   const stop = () => {
     console.log('STOP RADIO');
-    
+
     if (audioRef.current) {
       audioRef.current.pause();
       audioRef.current.src = '';

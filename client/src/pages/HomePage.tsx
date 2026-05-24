@@ -9,6 +9,7 @@ import lightShadow2 from '../utils/lightShadow2';
 import { useResponsive } from '../hooks/useResponsive';
 import RainbowBg from '../assets/images/rainbow_background.jpg';
 
+
 export default function HomePage() {
   const { isMobile, isTablet, isDesktop } = useResponsive();
   const { track, progress, emission } = useAudio();

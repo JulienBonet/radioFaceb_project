@@ -1,7 +1,10 @@
+// client/src/pages/Grille.tsx
 import { useState, useEffect, useRef } from 'react';
 import { Grid, Box, Stack, Button, Typography } from '@mui/material';
 import Divider from '@mui/material/Divider';
+import { toMinutes } from '../utils/radioTime';
 import { getScheduleByDay } from '../utils/getScheduleByDay';
+import { mergeScheduleBlocks } from '../utils/mergeScheduleBlocks';
 import EmissionBlock from '../components/EmissionBlock';
 
 const DAYS = [
@@ -17,7 +20,15 @@ const DAYS = [
 export default function Grille() {
   const [selectedDay, setSelectedDay] = useState(new Date().getDay());
 
-  const schedule = getScheduleByDay(selectedDay);
+  const rawSchedule = getScheduleByDay(selectedDay);
+
+  const rotatedSchedule = [
+    ...rawSchedule.filter((b) => toMinutes(b.start) >= 390),
+    ...rawSchedule.filter((b) => toMinutes(b.start) < 390),
+  ];
+
+  const schedule = mergeScheduleBlocks(rotatedSchedule);
+
   const selectedDayLabel = DAYS.find((d) => d.value === selectedDay)?.label;
 
   const buttonRefs = useRef(new Map<number, HTMLButtonElement | null>());
