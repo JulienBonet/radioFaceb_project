@@ -1,26 +1,47 @@
-import { Box, Typography } from '@mui/material';
+// client/src/pages/ContactPage.tsx
 
-export default function Contact() {
+import { Box, Stack} from '@mui/material';
+import RainbowBg from '../assets/images/rainbow_background.jpg';
+import ContactBlock from '../components/contact/ContactBlock'
+import NewsLetterBlock from '../components/contact/NewsletterBlock';
+import InstagramBlock from '../components/contact/InstagramBlock'
+
+export default function ContactPage() {
+
+
+
+  //-------------------------
+  // RETURN
+  //-------------------------
+
   return (
-    <>
+    <Stack
+      sx={{
+        width: '100%',
+        backgroundImage: `url(${RainbowBg})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+      }}
+    >
       <Box
         sx={{
-          backgroundColor: 'black',
-          mt: 15,
+          px: 3,
+          pt: 4,
+          pb: '120px',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          flexDirection: 'column',
         }}
       >
-        <Typography
-          sx={{
-            fontize: 'xxx-large',
-            fontWeight: 'bold',
-            color: 'white',
-            textAlign: 'center',
-            height: '40px',
-          }}
-        >
-          PAGE CONTACT
-        </Typography>
+
+        <ContactBlock />
+
+        <NewsLetterBlock />
+
+        <InstagramBlock />
       </Box>
-    </>
+    </Stack>
   );
 }
