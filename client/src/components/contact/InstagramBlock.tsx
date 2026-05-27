@@ -1,3 +1,4 @@
+// client/src/components/contact/InstagramBlock.tsx
 import { Button, Paper, Stack, Typography } from '@mui/material';
 import InstagramIcon from '@mui/icons-material/Instagram';
 

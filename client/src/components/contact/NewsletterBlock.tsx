@@ -1,3 +1,4 @@
+// client/src/components/contact/NewsletterBlock.tsx
 import { useState } from 'react';
 import {
   Checkbox,

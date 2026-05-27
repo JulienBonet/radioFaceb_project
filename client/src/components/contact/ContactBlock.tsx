@@ -1,3 +1,4 @@
+// client/src/components/contact/ContactBlock.tsx
 import { useState } from 'react';
 import { Box, Button, Paper, Stack, TextField, Typography, Alert } from '@mui/material';
 
