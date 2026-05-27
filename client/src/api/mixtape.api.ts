@@ -1,92 +1,51 @@
-// client/src/api/mixtape.api.ts
-const API_URL = import.meta.env.VITE_API_URL as string;
+import type { Mixtape }
+from '../types/mixtape';
 
-export type Mixtape = {
-  id: number;
-  title: string;
-  slug: string;
-  cover: string;
-  embed_ref: string;
-  platform: 'mixcloud' | 'hearthis';
-  presentation: string | null;
-  tracklist: string | null;
-  genre_id: number;
-  genre_name: string;
-  genre_color: string;
-  is_published: boolean;
-  created_at: string;
-  updated_at: string;
-};
+const API_URL =
+  import.meta.env.VITE_API_URL as string;
 
-export const getAllMixtapes = async (): Promise<Mixtape[]> => {
-  const res = await fetch(`${API_URL}/mixtapes`);
+export const getAllMixtapes =
+async (): Promise<Mixtape[]> => {
+  const res = await fetch(
+    `${API_URL}/mixtapes`
+  );
 
   if (!res.ok) {
-    throw new Error('Error fetching mixtapes');
+    throw new Error(
+      'Error fetching mixtapes'
+    );
   }
 
   return res.json();
 };
 
-export const getAllPublishedMixtapes = async (): Promise<Mixtape[]> => {
-  const res = await fetch(`${API_URL}/mixtapes/published`);
+export const getAllPublishedMixtapes =
+async (): Promise<Mixtape[]> => {
+  const res = await fetch(
+    `${API_URL}/mixtapes/published`
+  );
 
   if (!res.ok) {
-    throw new Error('Error fetching mixtapes');
+    throw new Error(
+      'Error fetching mixtapes'
+    );
   }
 
   return res.json();
 };
 
-export const getMixtapeById = async (id: number): Promise<Mixtape> => {
-  const res = await fetch(`${API_URL}/mixtapes/${id}`);
+export const getMixtapeById =
+async (
+  id: number
+): Promise<Mixtape> => {
+  const res = await fetch(
+    `${API_URL}/mixtapes/${id}`
+  );
 
   if (!res.ok) {
-    throw new Error('Error fetching mixtape');
-  }
-
-  return res.json();
-};
-
-export const createMixtape = async (data: Partial<Mixtape>) => {
-  const res = await fetch(`${API_URL}/mixtapes`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(data),
-  });
-
-  if (!res.ok) {
-    throw new Error('Error creating mixtape');
-  }
-
-  return res.json();
-};
-
-export const updateMixtape = async (id: number, data: Partial<Mixtape>) => {
-  const res = await fetch(`${API_URL}/mixtapes/${id}`, {
-    method: 'PUT',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(data),
-  });
-
-  if (!res.ok) {
-    throw new Error('Error updating mixtape');
-  }
-
-  return res.json();
-};
-
-export const deleteMixtape = async (id: number) => {
-  const res = await fetch(`${API_URL}/mixtapes/${id}`, {
-    method: 'DELETE',
-  });
-
-  if (!res.ok) {
-    throw new Error('Error deleting mixtape');
+    throw new Error(
+      'Error fetching mixtape'
+    );
   }
 
   return res.json();
