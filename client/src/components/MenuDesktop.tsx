@@ -51,6 +51,9 @@ const MenuDesktop = () => {
         <Button component={Link} to="/comment_ecouter">
           COMMENT ECOUTER ?
         </Button>
+        <Button component={Link} to="/newsletter">
+          NEWSLETTER
+        </Button>
         <Button component={Link} to="/contact">
           CONTACT
         </Button>

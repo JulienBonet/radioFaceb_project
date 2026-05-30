@@ -28,6 +28,7 @@ const MenuBurger = () => {
     { label: 'grille des programmes', path: '/grille' },
     { label: 'La radio', path: '/presentation' },
     { label: 'Comment écouter ?', path: '/comment_ecouter' },
+    { label: 'Newsletter', path: '/newsletter' },
     { label: 'Contact', path: '/contact' },
   ];
 

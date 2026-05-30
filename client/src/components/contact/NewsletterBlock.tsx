@@ -159,6 +159,19 @@ export default function NewsletterBlock() {
         width: '90%',
         maxWidth: 900,
         mt: 4,
+        
+        animation: 'contentFade 0.35s ease',
+
+        '@keyframes contentFade': {
+          from: {
+            opacity: 0,
+            transform: 'translateY(8px)',
+          },
+          to: {
+            opacity: 1,
+            transform: 'translateY(0)',
+          },
+        },
       }}
     >
       <Stack spacing={3}>

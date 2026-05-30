@@ -80,7 +80,7 @@ export default function Grille() {
 
           justifyContent: { xs: 'flex-start', md: 'center' },
 
-          // ✅ keyframes ici
+          // ✅ keyframes
           '@keyframes fadeSlide': {
             from: {
               opacity: 0,

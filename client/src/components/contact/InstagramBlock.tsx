@@ -13,6 +13,19 @@ export default function InstagramBlock() {
         maxWidth: 900,
         mt: 4,
         textAlign: 'center',
+
+        animation: 'contentFade 0.7s ease',
+
+        '@keyframes contentFade': {
+          from: {
+            opacity: 0,
+            transform: 'translateY(8px)',
+          },
+          to: {
+            opacity: 1,
+            transform: 'translateY(0)',
+          },
+        },
       }}
     >
       <Stack spacing={2} sx={{ alignItems: 'center' }}>

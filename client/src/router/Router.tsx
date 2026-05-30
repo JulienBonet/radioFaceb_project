@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import HomePage from '../pages/HomePage';
 import Grille from '../pages/Grille';
 import CommentEcouter from '../pages/CommentEcouter';
+import Newsletter from '../pages/Newsletter';
 import Contact from '../pages/Contact';
 import Historique from '../pages/Historique';
 import Mixtapes from '../pages/Mixtapes';
@@ -26,6 +27,7 @@ export default function Router() {
       <Route path="/" element={<HomePage />} />
       <Route path="/grille" element={<Grille />} />
       <Route path="/comment_ecouter" element={<CommentEcouter />} />
+      <Route path="/newsletter" element={<Newsletter />} />
       <Route path="/contact" element={<Contact />} />
       <Route path="/historique" element={<Historique />} />
       <Route path="/mixtapes" element={<Mixtapes />} />
