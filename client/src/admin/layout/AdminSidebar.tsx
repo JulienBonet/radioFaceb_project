@@ -1,3 +1,4 @@
+// client/src/admin/layout/AdminSidebar.tsx
 import { List, ListItemText, Box, Button, ListItemButton } from '@mui/material';
 import { NavLink } from 'react-router-dom';
 import { logoutAdmin } from '../auth/adminAuthService';
@@ -5,6 +6,7 @@ import { logoutAdmin } from '../auth/adminAuthService';
 const menu = [
   { label: 'Dashboard', path: '/admin' },
   { label: 'Mixtapes', path: '/admin/mixtapes' },
+  { label: 'Genres', path: '/admin/genres'},
 ];
 
 export default function AdminSidebar() {

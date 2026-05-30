@@ -16,6 +16,7 @@ import AdminLayout from '../admin/layout/AdminLayout';
 
 import AdminDashboard from '../admin/pages/AdminDashboard';
 import AdminMixtapes from '../admin/pages/AdminMixtapes';
+import AdminGenres from '../admin/pages/AdminGenres';
 
 export default function Router() {
   return (
@@ -33,10 +34,7 @@ export default function Router() {
 
       {/* ADMIN */}
 
-      <Route
-        path="/admin/login"
-        element={<AdminLogin />}
-      />
+      <Route path="/admin/login" element={<AdminLogin />} />
 
       <Route
         path="/admin"
@@ -46,15 +44,11 @@ export default function Router() {
           </AdminRoute>
         }
       >
-        <Route
-          index
-          element={<AdminDashboard />}
-        />
+        <Route index element={<AdminDashboard />} />
 
-        <Route
-          path="mixtapes"
-          element={<AdminMixtapes />}
-        />
+        <Route path="mixtapes" element={<AdminMixtapes />} />
+
+        <Route path="genres" element={<AdminGenres />} />
       </Route>
     </Routes>
   );

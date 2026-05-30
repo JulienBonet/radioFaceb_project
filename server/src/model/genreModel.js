@@ -1,3 +1,4 @@
+// server/src/model/genreModel.js
 import db from '../../db/db.js';
 
 export const getAllGenres =

@@ -7,14 +7,16 @@ import genreRoutes from './routes/genreRoutes.js';
 import contactRoute from './routes/contactRoute.js';
 import newsletterRoute from './routes/newsletterRoute.js';
 import adminAuthRoute from './routes/adminAuthRoute.js'
+import adminStatsRoute from './routes/adminStatsRoute.js'
 
 const router = Router();
 
 router.use('/mixtapes', mixtapeRoutes);
 router.use('/upload', uploadRoutes);
 router.use('/genres', genreRoutes);
-router.use('/contact', contactRoute)
-router.use('/newsletter', newsletterRoute)
-router.use('/admin', adminAuthRoute)
+router.use('/contact', contactRoute);
+router.use('/newsletter', newsletterRoute);
+router.use('/admin', adminAuthRoute);
+router.use('/stats', adminStatsRoute);
 
 export default router;

@@ -26,7 +26,9 @@ import type { Mixtape } from '../../types/mixtape';
 
 import { createMixtape, updateMixtape } from '../api/adminMixtapeApi';
 
-import { getAllGenres, type Genre } from '../api/genre.api';
+import { getAllGenres} from '../api/adminGenreApi';
+
+import type { Genre } from '../../types/genre';
 
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 

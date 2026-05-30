@@ -40,8 +40,11 @@ const AdminMixtapesPage = () => {
   };
 
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect
-    void fetchData();
+    const load = async () => {
+      await fetchData();
+    };
+
+    void load();
   }, []);
 
   const handleDelete = async (id: number) => {
@@ -187,7 +190,9 @@ const AdminMixtapesPage = () => {
           mb: 3,
         }}
       >
-        <Typography sx={{fontFamily: 'var(--font_05)', fontSize: 'xx-large', fontWeight: 'bold'}}>Admin Mixtapes</Typography>
+        <Typography sx={{ fontFamily: 'var(--font_05)', fontSize: 'xx-large', fontWeight: 'bold' }}>
+          Admin Mixtapes
+        </Typography>
 
         <Button
           variant="contained"
@@ -203,7 +208,7 @@ const AdminMixtapesPage = () => {
 
       <Box
         sx={{
-          height: 500,
+          height: 600,
           backgroundColor: 'white',
           mb: '120px',
         }}

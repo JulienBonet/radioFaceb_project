@@ -1,3 +1,6 @@
+// VERIF : A EFFACER CAR DESORMAIS DANS src/admin/api
+// Check que tout se plug bien et bye
+
 const API_URL =
   import.meta.env
     .VITE_API_URL as string;

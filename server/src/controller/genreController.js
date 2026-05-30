@@ -1,3 +1,4 @@
+// server/src/controller/genreController.js
 import db from '../../db/db.js';
 
 import * as model from '../model/genreModel.js';

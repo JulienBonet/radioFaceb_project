@@ -1,3 +1,4 @@
+// server/src/validation/genreSchema.js
 import { z } from 'zod';
 
 export const genreSchema = z.object({
