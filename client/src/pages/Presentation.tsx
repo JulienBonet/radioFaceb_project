@@ -16,7 +16,6 @@ export default function Presentation() {
   };
 
   const radioDividerSx = {
-    fontFamily: 'var(--font_04)',
     my: 3,
   };
 

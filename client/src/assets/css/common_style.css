@@ -23,6 +23,10 @@ html, body, #root {
   width: 100%;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 /* editeur html */
 strong {
   font-weight: bold;
