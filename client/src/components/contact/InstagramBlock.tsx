@@ -14,7 +14,7 @@ export default function InstagramBlock() {
         mt: 4,
         textAlign: 'center',
 
-        animation: 'contentFade 0.7s ease',
+        animation: 'contentFade 1s ease',
 
         '@keyframes contentFade': {
           from: {
