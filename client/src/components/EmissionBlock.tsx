@@ -69,26 +69,38 @@ export default function EmissionBlock({ block }: { block: ScheduleBlock }) {
             },
           }}
         >
-          <Stack
-            sx={{
-              border: '1px dashed white',
-              borderRadius: 1,
-              p: 1,
-              boxShadow: 1,
-              mt: 1,
-            }}
-          >
+          <Box>
             <Typography
               sx={{
-                fontFamily: 'var(--font_05)',
+                fontFamily: 'var(--font_04)',
                 fontSize: 'small',
-                fontWeight: 500,
+                fontWeight: 600,
                 textAlign: 'center',
               }}
             >
-              {emission.styles}
+              {emission.description}
             </Typography>
-          </Stack>
+            <Stack
+              sx={{
+                border: '1px dashed white',
+                borderRadius: 1,
+                p: 1,
+                boxShadow: 1,
+                mt: 2,
+              }}
+            >
+              <Typography
+                sx={{
+                  fontFamily: 'var(--font_05)',
+                  fontSize: 'small',
+                  fontWeight: 500,
+                  textAlign: 'center',
+                }}
+              >
+                {emission.styles}
+              </Typography>
+            </Stack>
+          </Box>
         </Collapse>
 
         {/* ICON */}
