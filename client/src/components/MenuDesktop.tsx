@@ -37,7 +37,7 @@ const MenuDesktop = () => {
           PLAYER
         </Button>
         <Button component={Link} to="/historique">
-          C'ETAIT QUOI ?
+          C'ÉTAIT QUOI ?
         </Button>
         <Button component={Link} to="/mixtapes">
           MIXTAPES
@@ -49,7 +49,7 @@ const MenuDesktop = () => {
           LA RADIO
         </Button>
         <Button component={Link} to="/comment_ecouter">
-          COMMENT ECOUTER ?
+          COMMENT ÉCOUTER ?
         </Button>
         <Button component={Link} to="/newsletter">
           NEWSLETTER
