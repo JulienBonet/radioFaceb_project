@@ -80,7 +80,7 @@ export default function Presentation() {
         </Box>
         <Box
           component="img"
-          src="/images/Jack-Nicholson-listening-Radio-Face-B-1200x500px.jpg"
+          src="/images/listen_radio_face_b_12_5.jpg"
           alt="écouter Radio Face B"
           sx={{ width: '100%' }}
         />
@@ -127,7 +127,7 @@ export default function Presentation() {
               component="span"
               sx={{
                 fontWeight: 'bold',
-                color: 'var(--color_01)',
+                color: 'var(--color_07)',
               }}
             >
               DIRECTEMENT SUR LE SITE
@@ -152,7 +152,7 @@ export default function Presentation() {
               component="span"
               sx={{
                 fontWeight: 'bold',
-                color: 'var(--color_01)',
+                color: 'var(--color_07)',
               }}
             >
               DANS VOTRE MEDIA PLAYER
@@ -203,7 +203,7 @@ export default function Presentation() {
               component="span"
               sx={{
                 fontWeight: 'bold',
-                color: 'var(--color_01)',
+                color: 'var(--color_07)',
               }}
             >
               SUR DEEZER

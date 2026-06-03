@@ -63,8 +63,8 @@ export default function Presentation() {
         </Box>
         <Box
           component="img"
-          src="/images/david-bowie-DJ-1200-500px.jpg"
-          alt="Radio Face B"
+          src="/images/Dj_Radio_Face_B_12_5.jpg"
+          alt="Bienvenue sur Radio Face B"
           sx={{ width: '100%' }}
         />
         <Divider sx={radioDividerSx} />
@@ -139,12 +139,12 @@ export default function Presentation() {
               component={Link}
               to="/grille"
               sx={{
-                color: 'var(--color_05)',
-                borderColor: 'var(--color_05)',
+                color: 'var(--color_07)',
+                borderColor: 'var(--color_07)',
 
                 '&:hover': {
-                  borderColor: 'var(--color_02)',
-                  color: 'var(--color_02)',
+                  borderColor: 'var(--color_05)',
+                  color: 'var(--color_05)',
                   backgroundColor: 'rgba(255,255,255,0.05)',
                 },
               }}
