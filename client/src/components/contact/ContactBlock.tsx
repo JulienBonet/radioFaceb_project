@@ -147,6 +147,7 @@ export default function ContactBlock() {
     >
       <Stack spacing={3}>
         <Typography
+          component="h1"
           sx={{
             color: 'var(--color_05)',
             fontFamily: 'var(--font_01)',

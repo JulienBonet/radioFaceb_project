@@ -30,6 +30,7 @@ export default function InstagramBlock() {
     >
       <Stack spacing={2} sx={{ alignItems: 'center' }}>
         <Typography
+          component="h2"
           sx={{
             fontFamily: 'var(--font_01)',
             fontWeight: 'bold',

@@ -4,6 +4,7 @@ const TitleHomePage = () => {
   return (
     <>
       <Typography
+        component="h1"
         sx={{
           color: 'var(--color_05)',
           fontFamily: 'var(--font_01)',
@@ -15,6 +16,7 @@ const TitleHomePage = () => {
         RADIO FACE B
       </Typography>
       <Typography
+      component="h2"
         sx={{
           color: 'var(--color_05)',
           fontFamily: 'var(--font_02)',

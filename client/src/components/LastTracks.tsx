@@ -1,7 +1,7 @@
 // client/src/components/LastTracks.tsx
 import { Box, Typography } from '@mui/material';
 import Divider from '@mui/material/Divider';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Fragment } from 'react';
 
 interface Track {
   id: number;
@@ -45,15 +45,12 @@ export default function LastTracks({ compact = false }: Props) {
         minWidth: 0,
       }}
     >
-      <Typography sx={{ color: 'black', mb: 1 }}>
-        Derniers titres
-      </Typography>
+      <Typography sx={{ color: 'black', mb: 1 }}>Derniers titres</Typography>
       <Divider sx={{ my: 1 }} />
 
       {tracks.map((t) => (
-        <>
+        <Fragment key={`${t.ts}-${t.title}`}>
           <Box
-            key={t.id}
             sx={{
               display: 'flex',
               alignItems: 'center',
@@ -101,8 +98,9 @@ export default function LastTracks({ compact = false }: Props) {
               })}
             </Typography>
           </Box>
+
           <Divider sx={{ my: 1 }} />
-        </>
+        </Fragment>
       ))}
     </Box>
   );

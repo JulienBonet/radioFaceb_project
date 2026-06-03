@@ -176,6 +176,7 @@ export default function NewsletterBlock() {
     >
       <Stack spacing={3}>
         <Typography
+        component="h1"
           sx={{
             color: 'var(--color_02)',
             fontFamily: 'var(--font_01)',
