@@ -33,6 +33,7 @@ export default function Presentation() {
       <Seo
         title="Comment écouter Radio Face B ?"
         description="Comment écouter Radio Face B en toute simplicité ? | Où écouter Radio Face B Facilement ? | lecteur | Deezer | applis"
+        image="/images/listen_radio_face_b_12_5.jpg"
       />
       <main>
         <Stack sx={{ alignItems: 'center', width: '100%' }}>
@@ -64,7 +65,7 @@ export default function Presentation() {
           >
             <Box>
               <Typography
-              component="h1"
+                component="h1"
                 sx={{
                   fontFamily: 'var(--font_01)',
                   fontWeight: 'bold',

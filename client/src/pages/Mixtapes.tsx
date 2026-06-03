@@ -72,6 +72,7 @@ export default function Mixtapes() {
       <Seo
         title="Radio Face B | Mixtapes"
         description="Retrouvez toutes les Mixtapes by BIG JuLius en écoute sur Radio Face B"
+        image="/images/Radio_Face_B_Mixtape.jpg"
       />
       <main>
         <Box>
