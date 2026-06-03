@@ -32,17 +32,3 @@ export const getMixtapeById = async (id: number): Promise<Mixtape> => {
 
   return res.json();
 };
-
-export const getMixtapeBySlug = async (
-  slug: string
-): Promise<Mixtape> => {
-  const res = await fetch(
-    `${API_URL}/mixtapes/slug/${slug}`
-  );
-
-  if (!res.ok) {
-    throw new Error('Error fetching mixtape');
-  }
-
-  return res.json();
-};
