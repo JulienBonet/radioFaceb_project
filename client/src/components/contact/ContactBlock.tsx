@@ -97,7 +97,7 @@ export default function ContactBlock() {
       },
 
       '&.Mui-focused fieldset': {
-        borderColor: 'var(--color_01)',
+        borderColor: 'var(--color_02)',
       },
     },
 
@@ -106,7 +106,7 @@ export default function ContactBlock() {
     },
 
     '& .MuiInputLabel-root.Mui-focused': {
-      color: 'var(--color_01)',
+      color: 'var(--color_02)',
     },
   };
 
@@ -115,7 +115,7 @@ export default function ContactBlock() {
     fontweight: 'bold',
 
     '&:hover': {
-      backgroundColor: 'var(--color_01)',
+      backgroundColor: 'var(--color_02)',
     },
   };
   //-------------------------
