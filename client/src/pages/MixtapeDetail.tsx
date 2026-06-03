@@ -9,11 +9,20 @@ import Seo from '../components/Seo';
 const CLOUDINARY_BASE_URL = import.meta.env.VITE_CLOUDINARY_BASE_URL as string;
 
 export default function MixtapeDetail() {
-  const { id } = useParams();
   const navigate = useNavigate();
+  const { id, slug } = useParams();
   const { mixtape, loading, error } = useMixtape(Number(id));
+
   const { stop, setAudioMode } = useAudio();
   const [playerStarted, setPlayerStarted] = useState(false);
+
+  useEffect(() => {
+    if (!mixtape) return;
+
+    if (slug !== mixtape.slug) {
+      navigate(`/mixtapes/${mixtape.id}/${mixtape.slug}`, { replace: true });
+    }
+  }, [mixtape, slug, navigate]);
 
   // stop radio flux
   useEffect(() => {

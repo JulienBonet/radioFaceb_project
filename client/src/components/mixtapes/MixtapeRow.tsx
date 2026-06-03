@@ -1,5 +1,6 @@
+// client/src/components/mixtapes/MixtapeRow.tsx
 import { Box, Typography, Divider } from '@mui/material';
-import type { Mixtape } from '../../api/mixtape.api';
+import type { Mixtape } from '../../types/mixtape';
 import MixtapeCard from './MixtapeCard';
 
 type Props = {

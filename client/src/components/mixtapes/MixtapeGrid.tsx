@@ -1,6 +1,6 @@
 // client/src/components/mixtapes/MixtapeGrid.tsx
 import { Box } from "@mui/material";
-import type { Mixtape } from "../../api/mixtape.api";
+import type { Mixtape } from "../../types/mixtape";
 import MixtapeCard from "./MixtapeCard";
 
 type Props = {

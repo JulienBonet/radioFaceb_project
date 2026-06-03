@@ -1,7 +1,7 @@
 // client/src/components/mixtapes/MixtapeCard.tsx
 const CLOUDINARY_BASE_URL = import.meta.env.VITE_CLOUDINARY_BASE_URL as string;
 import { Box, Stack, Typography } from '@mui/material';
-import type { Mixtape } from '../../api/mixtape.api';
+import type { Mixtape } from '../../types/mixtape';
 
 type Props = {
   mixtape: Mixtape;

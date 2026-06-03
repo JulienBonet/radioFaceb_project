@@ -1,51 +1,47 @@
-import type { Mixtape }
-from '../types/mixtape';
+// client/src/api/mixtape.api.ts
+import type { Mixtape } from '../types/mixtape';
 
-const API_URL =
-  import.meta.env.VITE_API_URL as string;
+const API_URL = import.meta.env.VITE_API_URL as string;
 
-export const getAllMixtapes =
-async (): Promise<Mixtape[]> => {
-  const res = await fetch(
-    `${API_URL}/mixtapes`
-  );
+export const getAllMixtapes = async (): Promise<Mixtape[]> => {
+  const res = await fetch(`${API_URL}/mixtapes`);
 
   if (!res.ok) {
-    throw new Error(
-      'Error fetching mixtapes'
-    );
+    throw new Error('Error fetching mixtapes');
   }
 
   return res.json();
 };
 
-export const getAllPublishedMixtapes =
-async (): Promise<Mixtape[]> => {
-  const res = await fetch(
-    `${API_URL}/mixtapes/published`
-  );
+export const getAllPublishedMixtapes = async (): Promise<Mixtape[]> => {
+  const res = await fetch(`${API_URL}/mixtapes/published`);
 
   if (!res.ok) {
-    throw new Error(
-      'Error fetching mixtapes'
-    );
+    throw new Error('Error fetching mixtapes');
   }
 
   return res.json();
 };
 
-export const getMixtapeById =
-async (
-  id: number
+export const getMixtapeById = async (id: number): Promise<Mixtape> => {
+  const res = await fetch(`${API_URL}/mixtapes/${id}`);
+
+  if (!res.ok) {
+    throw new Error('Error fetching mixtape');
+  }
+
+  return res.json();
+};
+
+export const getMixtapeBySlug = async (
+  slug: string
 ): Promise<Mixtape> => {
   const res = await fetch(
-    `${API_URL}/mixtapes/${id}`
+    `${API_URL}/mixtapes/slug/${slug}`
   );
 
   if (!res.ok) {
-    throw new Error(
-      'Error fetching mixtape'
-    );
+    throw new Error('Error fetching mixtape');
   }
 
   return res.json();

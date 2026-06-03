@@ -1,6 +1,6 @@
 // client/src/pages/Mixtapes.tsx
 import { useNavigate } from 'react-router-dom';
-import { useMemo, useState } from 'react';
+import { useMemo, useState, useEffect } from 'react';
 import {
   Box,
   Stack,
@@ -9,6 +9,7 @@ import {
   TextField,
   InputAdornment,
   IconButton,
+  Pagination,
 } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import CloseIcon from '@mui/icons-material/Close';
@@ -21,6 +22,7 @@ export default function Mixtapes() {
   const { mixtapes, loading, error } = useMixtapes();
   const [selectedGenre, setSelectedGenre] = useState('ALL');
   const [search, setSearch] = useState('');
+  const [page, setPage] = useState(1);
 
   const navigate = useNavigate();
 
@@ -28,6 +30,10 @@ export default function Mixtapes() {
     const list = mixtapes.map((m) => m.genre_name);
     return ['ALL', ...Array.from(new Set(list))];
   }, [mixtapes]);
+
+  // -----------
+  // FILTERED
+  // -----------
 
   const filteredMixtapes = useMemo(() => {
     const query = search.toLowerCase();
@@ -45,6 +51,27 @@ export default function Mixtapes() {
     });
   }, [mixtapes, selectedGenre, search]);
 
+  // -----------
+  // PAGINATION
+  // -----------
+
+  const ITEMS_PER_PAGE = 8;
+
+  const totalPages = Math.ceil(filteredMixtapes.length / ITEMS_PER_PAGE);
+
+  const paginatedMixtapes = useMemo(() => {
+    return filteredMixtapes.slice((page - 1) * ITEMS_PER_PAGE, page * ITEMS_PER_PAGE);
+  }, [filteredMixtapes, page]);
+
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setPage(1);
+  }, [search, selectedGenre]);
+
+  // -----------
+  // GENRES
+  // -----------
+
   const mixtapesByGenre = useMemo(() => {
     const map: Record<string, typeof filteredMixtapes> = {};
 
@@ -61,9 +88,18 @@ export default function Mixtapes() {
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
 
-  const handleSelect = (id: number) => {
-    navigate(`/mixtapes/${id}`);
-  };
+  // const handleSelect = (id: number) => {
+  //   navigate(`/mixtapes/${id}`);
+  // };
+
+const handleSelect = (id: number) => {
+  const mixtape = mixtapes.find((m) => m.id === id);
+
+  if (!mixtape) return;
+
+  navigate(`/mixtapes/${mixtape.id}/${mixtape.slug}`);
+};
+
 
   const ITEM_HEIGHT = 35;
 
@@ -265,7 +301,18 @@ export default function Mixtapes() {
                     ))}
                   </Box>
                   <Box sx={{ display: { xs: 'none', md: 'block' } }}>
-                    <MixtapeGrid mixtapes={filteredMixtapes} onSelect={handleSelect} />
+                    <MixtapeGrid mixtapes={paginatedMixtapes} onSelect={handleSelect} />
+
+                    <Pagination
+                      page={page}
+                      count={totalPages}
+                      onChange={(_, value) => setPage(value)}
+                      sx={{
+                        display: 'flex',
+                        justifyContent: 'center',
+                        mt: 4,
+                      }}
+                    />
                   </Box>
                 </>
               )}

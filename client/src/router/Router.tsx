@@ -32,7 +32,7 @@ export default function Router() {
       <Route path="/historique" element={<Historique />} />
       <Route path="/mixtapes" element={<Mixtapes />} />
       <Route path="/presentation" element={<Presentation />} />
-      <Route path="/mixtapes/:id" element={<MixtapeDetail />} />
+      <Route path="/mixtapes/:id/:slug" element={<MixtapeDetail />} />
 
       {/* ADMIN */}
 

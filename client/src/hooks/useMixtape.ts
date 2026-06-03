@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
-import type { Mixtape } from "../types/mixtape"
-import { getMixtapeById } from "../api/mixtape.api";
+import { useEffect, useState } from 'react';
+import type { Mixtape } from '../types/mixtape';
+import { getMixtapeById } from '../api/mixtape.api';
 
 export const useMixtape = (id: number) => {
   const [mixtape, setMixtape] = useState<Mixtape | null>(null);
