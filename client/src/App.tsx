@@ -19,7 +19,7 @@ function AppContent() {
 
   return (
     <AudioProvider>
-      <Header />
+       {!isAdminRoute && <Header />}
 
       {!isAdminRoute && !isMobile && !isTablet && <MenuDesktop />}
 

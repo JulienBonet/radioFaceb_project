@@ -6,12 +6,43 @@ import { logoutAdmin } from '../auth/adminAuthService';
 const menu = [
   { label: 'Dashboard', path: '/admin' },
   { label: 'Mixtapes', path: '/admin/mixtapes' },
-  { label: 'Genres', path: '/admin/genres'},
+  { label: 'Genres', path: '/admin/genres' },
 ];
 
 export default function AdminSidebar() {
   return (
-    <Box sx={{ width: 240, borderRight: '1px solid #ddd', backgroundColor: 'white', p: 2 }}>
+    <Box
+      sx={{
+        width: 240,
+        borderRight: '1px solid #ddd',
+        backgroundColor: 'white',
+        p: 2,
+        display: 'flex',
+        flexDirection: 'column',
+      }}
+    >
+      <Box
+        component="a"
+        href="/"
+        target="_blank"
+        rel="noopener noreferrer"
+        sx={{
+          display: 'flex',
+          justifyContent: 'center',
+          mb: 3,
+        }}
+      >
+        <Box
+          component="img"
+          src="/images/radio_face_b_logo.png"
+          alt="Radio Face B"
+          sx={{
+            width: 120,
+            height: 'auto',
+          }}
+        />
+      </Box>
+
       <List>
         {menu.map((item) => (
           <ListItemButton
@@ -32,7 +63,7 @@ export default function AdminSidebar() {
         ))}
       </List>
 
-      <Button fullWidth variant="outlined" color="error" onClick={logoutAdmin}>
+      <Button fullWidth variant="outlined" color="error" onClick={logoutAdmin} sx={{ mt: 'auto' }}>
         Logout
       </Button>
     </Box>

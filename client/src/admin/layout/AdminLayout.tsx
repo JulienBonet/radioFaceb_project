@@ -4,7 +4,7 @@ import AdminSidebar from './AdminSidebar';
 
 export default function AdminLayout() {
   return (
-    <Box sx={{ display: 'flex', minHeight: 'calc(100vh - 60px)' }}>
+    <Box sx={{ display: 'flex', height: '100vh' }}>
       <AdminSidebar />
 
       <Box
