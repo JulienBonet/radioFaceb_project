@@ -55,6 +55,7 @@ const MixtapeFormDialog = ({ open, onClose, onSuccess, mixtape }: Props) => {
   const [loading, setLoading] = useState(false);
 
   const [uploading, setUploading] = useState(false);
+  
 
   const {
     control,
@@ -162,7 +163,9 @@ const MixtapeFormDialog = ({ open, onClose, onSuccess, mixtape }: Props) => {
       setLoading(false);
     }
   };
+
   console.log(errors);
+  
   return (
     <Dialog
       open={open}

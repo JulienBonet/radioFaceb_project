@@ -1,3 +1,4 @@
+// client/src/admin/api/adminMixtapeApi.ts
 import type { Mixtape }
 from '../../types/mixtape';
 
@@ -12,7 +13,6 @@ async (
     '/mixtapes',
     {
       method: 'POST',
-
       body: JSON.stringify(data),
     }
   );

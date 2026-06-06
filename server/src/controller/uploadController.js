@@ -1,9 +1,7 @@
+// server/src/controller/uploadController.js
 import { uploadBufferToCloudinary } from '../utils/cloudinary.js';
 
-export const uploadMixtapeCover = async (
-  req,
-  res
-) => {
+export const uploadMixtapeCover = async (req, res) => {
   try {
     if (!req.file) {
       return res.status(400).json({
@@ -11,14 +9,14 @@ export const uploadMixtapeCover = async (
       });
     }
 
-    const result =
-      await uploadBufferToCloudinary({
-        buffer: req.file.buffer,
-      });
+    const result = await uploadBufferToCloudinary({
+      buffer: req.file.buffer,
+    });
 
     res.json({
       filename: result.filename,
     });
+
   } catch (err) {
     console.error(err);
 

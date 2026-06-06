@@ -1,34 +1,27 @@
-const API_URL =
-  import.meta.env
-    .VITE_API_URL as string;
+// client/src/admin/api/upload.api.ts
 
-export const uploadMixtapeCover =
-  async (
-    file: File
-  ): Promise<{
-    filename: string;
-  }> => {
-    const formData =
-      new FormData();
+const API_URL = import.meta.env.VITE_API_URL as string;
 
-    formData.append(
-      'cover',
-      file
-    );
+export const uploadMixtapeCover = async (
+  file: File,
+): Promise<{ filename: string }> => {
+  const formData = new FormData();
+  formData.append('cover', file);
 
-    const res = await fetch(
-      `${API_URL}/upload/mixtape-cover`,
-      {
-        method: 'POST',
-        body: formData,
-      }
-    );
+  const token = localStorage.getItem('admin_token');
 
-    if (!res.ok) {
-      throw new Error(
-        'Error uploading image'
-      );
-    }
+  const res = await fetch(`${API_URL}/upload/mixtape-cover`, {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${token}`,
+      // ⚠️ ne PAS mettre Content-Type
+    },
+    body: formData,
+  });
 
-    return res.json();
-  };
+  if (!res.ok) {
+    throw new Error('Error uploading image');
+  }
+
+  return res.json();
+};
