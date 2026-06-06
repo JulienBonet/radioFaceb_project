@@ -9,6 +9,7 @@ import lightShadow2 from '../utils/lightShadow2';
 import { useResponsive } from '../hooks/useResponsive';
 import RainbowBg from '../assets/images/rainbow_background.jpg';
 import Seo from '../components/Seo';
+import HomeLinkBar from '../components/HomeLinkBar';
 
 export default function HomePage() {
   const { isMobile, isTablet, isDesktop } = useResponsive();
@@ -20,8 +21,6 @@ export default function HomePage() {
 
   const progressPercent = Math.min(progress * 100, 100);
   const elapsed = track.length * progress;
-
-  
 
   return (
     <>
@@ -179,7 +178,7 @@ export default function HomePage() {
                 <Box
                   sx={{
                     width: '100%',
-                    mb: 3,
+                    mb: 2,
                     borderRadius: 3,
                     backdropFilter: 'blur(10px)',
                     transition: 'all 0.6s ease',
@@ -233,6 +232,7 @@ export default function HomePage() {
                   </Stack>
                 </Box>
                 <LastTracks compact />
+                <HomeLinkBar />
               </Grid>
             </Grid>
           </Box>

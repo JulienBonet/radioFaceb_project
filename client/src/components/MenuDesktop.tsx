@@ -34,7 +34,7 @@ const MenuDesktop = () => {
         }}
       >
         <Button component={Link} to="/">
-          PLAYER
+          LE DIRECT
         </Button>
         <Button component={Link} to="/historique">
           C'ÉTAIT QUOI ?

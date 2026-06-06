@@ -22,7 +22,7 @@ const MenuBurger = () => {
   const navigate = useNavigate();
 
   const menuItems: MenuItem[] = [
-    { label: 'Player', path: '/' },
+    { label: 'Le Direct', path: '/' },
     { label: "C'était quoi ce titre ?", path: '/historique' },
     { label: 'Les mixtapes', path: '/mixtapes' },
     { label: 'grille des programmes', path: '/grille' },
