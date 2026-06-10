@@ -55,7 +55,7 @@ export default function Mixtapes() {
   // PAGINATION
   // -----------
 
-  const ITEMS_PER_PAGE = 8;
+  const ITEMS_PER_PAGE = 12;
 
   const totalPages = Math.ceil(filteredMixtapes.length / ITEMS_PER_PAGE);
 
@@ -123,6 +123,7 @@ const handleSelect = (id: number) => {
               py: 1,
               gap: 2,
               justifyContent: 'center',
+              flexWrap: 'wrap'
             }}
           >
             {/* GENRES */}

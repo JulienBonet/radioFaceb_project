@@ -98,29 +98,34 @@ const MixtapeFormDialog = ({ open, onClose, onSuccess, mixtape }: Props) => {
   }, []);
 
   useEffect(() => {
-    if (!mixtape) {
-      reset({
-        title: '',
-        cover: '',
-        platform: 'mixcloud',
-        embed_ref: '',
-        genre_id: 1,
-        is_published: true,
-      });
-      return;
-    }
+  if (!open) return;
 
+  if (!mixtape) {
     reset({
-      title: mixtape.title,
-      cover: mixtape.cover,
-      platform: mixtape.platform,
-      embed_ref: mixtape.embed_ref,
-      genre_id: mixtape.genre_id,
-      is_published: Boolean(mixtape.is_published),
-      presentation: mixtape.presentation || '',
-      tracklist: mixtape.tracklist || '',
+      title: '',
+      cover: '',
+      platform: 'mixcloud',
+      embed_ref: '',
+      genre_id: 1,
+      is_published: true,
+      presentation: '',
+      tracklist: '',
     });
-  }, [mixtape, reset]);
+
+    return;
+  }
+
+  reset({
+    title: mixtape.title,
+    cover: mixtape.cover,
+    platform: mixtape.platform,
+    embed_ref: mixtape.embed_ref,
+    genre_id: mixtape.genre_id,
+    is_published: Boolean(mixtape.is_published),
+    presentation: mixtape.presentation || '',
+    tracklist: mixtape.tracklist || '',
+  });
+}, [open, mixtape, reset]);
 
   const handleUpload = async (file: File) => {
     try {

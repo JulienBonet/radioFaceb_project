@@ -321,7 +321,7 @@ export default function MixtapeDetail() {
                     sx={{
                       fontFamily: 'var(--font_04)',
                       fontWeight: 'bold',
-                      mb: 1,
+                      mb: 2,
                     }}
                   >
                     Tracklist :

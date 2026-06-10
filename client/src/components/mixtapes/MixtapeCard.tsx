@@ -19,6 +19,7 @@ const MixtapeCard = ({ mixtape, onClick }: Props) => {
         borderRadius: 2,
         overflow: 'hidden',
         backgroundColor: `${mixtape.genre_color}`,
+        border: '1px solid grey',
         transition: '0.2s',
         '&:hover': {
           transform: 'scale(1.05)',
@@ -43,10 +44,11 @@ const MixtapeCard = ({ mixtape, onClick }: Props) => {
         sx={{
           justifyContent: 'center',
           alignItems: 'center',
-          pb: 1,
+          py: 1,
+          minHeight: 75,
         }}
       >
-        <Typography variant="subtitle2" sx={{ color: 'white', fontFamily: 'var(--font_04)' }}>
+        <Typography variant="subtitle2" sx={{ color: 'white', fontFamily: 'var(--font_04)', px: 1, textAlign: 'center', fontWeight: 'bold' }}>
           {mixtape.title}
         </Typography>
 

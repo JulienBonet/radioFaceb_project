@@ -216,7 +216,7 @@ useEffect(() => {
 
       <Box
         sx={{
-          height: 600,
+          height: '80vh',
           backgroundColor:
             'white',
         }}

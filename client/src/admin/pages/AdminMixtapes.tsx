@@ -208,7 +208,7 @@ const AdminMixtapesPage = () => {
 
       <Box
         sx={{
-          height: 600,
+          height: '80vh',
           backgroundColor: 'white',
           mb: '120px',
         }}
