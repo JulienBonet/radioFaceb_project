@@ -1,3 +1,4 @@
+// client/src/router/Router.tsx
 import { Routes, Route } from 'react-router-dom';
 
 import HomePage from '../pages/HomePage';
