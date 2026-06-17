@@ -235,7 +235,7 @@ export default function HistoryTracks() {
             />
 
             <Box sx={{ flex: 1, minWidth: 0 }}>
-              <Typography noWrap sx={{ fontSize: { xs: 12, sm: 14 }}}>
+              <Typography sx={{ fontSize: { xs: 12, sm: 14 }}}>
                 {t.author} — {t.title}
               </Typography>
             </Box>
