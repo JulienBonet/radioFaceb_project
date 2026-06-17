@@ -34,11 +34,22 @@ export default function MixtapeDetail() {
   if (loading) return <div>Loading...</div>;
   if (error || !mixtape) return <div>Error</div>;
 
+  // Strip Html in meta description
+
+  const stripHtml = (html: string) => {
+    const doc = new DOMParser().parseFromString(html, 'text/html');
+    return doc.body.textContent || '';
+  };
+
   return (
     <>
       <Seo
         title={mixtape ? `${mixtape.title} | Radio Face B` : 'Mixtape | Radio Face B'}
-        description={mixtape?.presentation ?? 'Découvrez cette mixtape sur Radio Face B.'}
+        description={
+          mixtape?.presentation
+            ? stripHtml(mixtape.presentation)
+            : 'Découvrez cette mixtape sur Radio Face B.'
+        }
         image={mixtape.cover}
       />
       <main>
