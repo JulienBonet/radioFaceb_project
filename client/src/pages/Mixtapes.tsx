@@ -88,10 +88,6 @@ export default function Mixtapes() {
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
 
-  // const handleSelect = (id: number) => {
-  //   navigate(`/mixtapes/${id}`);
-  // };
-
 const handleSelect = (id: number) => {
   const mixtape = mixtapes.find((m) => m.id === id);
 
@@ -132,6 +128,7 @@ const handleSelect = (id: number) => {
                 direction="row"
                 sx={{
                   flex: 1,
+                  flexWrap: 'wrap',
                   height: ITEM_HEIGHT,
                   overflowX: 'auto',
                   whiteSpace: 'nowrap',
