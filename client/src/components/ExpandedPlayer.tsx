@@ -1,6 +1,6 @@
-import { Box, Typography, IconButton, Slider } from "@mui/material";
-import { Close, PlayArrow, Pause } from "@mui/icons-material";
-import { useAudio } from "../hooks/useAudio";
+import { Box, Typography, IconButton, Slider } from '@mui/material';
+import { Close, PlayArrow, Pause } from '@mui/icons-material';
+import { useAudio } from '../hooks/useAudio';
 
 interface Props {
   open: boolean;
@@ -18,26 +18,26 @@ export default function ExpandedPlayer({ open, onClose }: Props) {
     <Box
       onClick={onClose}
       sx={{
-        position: "fixed",
+        position: 'fixed',
         inset: 0,
         zIndex: 10000,
-        background: "rgba(0,0,0,0.95)",
-        backdropFilter: "blur(30px)",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
+        background: 'rgba(0,0,0,0.95)',
+        backdropFilter: 'blur(30px)',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
       }}
     >
       {/* 🎨 background cover */}
       <Box
         sx={{
-          position: "absolute",
+          position: 'absolute',
           inset: 0,
           backgroundImage: `url(${track.img_large_url})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          filter: "blur(50px)",
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          filter: 'blur(50px)',
           opacity: 0.2,
         }}
       />
@@ -46,10 +46,12 @@ export default function ExpandedPlayer({ open, onClose }: Props) {
       <IconButton
         onClick={onClose}
         sx={{
-          position: "absolute",
+          position: 'absolute',
           top: 20,
           right: 20,
-          color: "white",
+          color: 'white',
+          background: 'radial-gradient(circle at center, rgba(0,0,0,0.35), rgba(0,0,0,0.75))',
+          zIndex: 10,
         }}
       >
         <Close />
@@ -59,10 +61,10 @@ export default function ExpandedPlayer({ open, onClose }: Props) {
       <Box
         onClick={(e) => e.stopPropagation()}
         sx={{
-          position: "relative",
+          position: 'relative',
           zIndex: 1,
-          textAlign: "center",
-          width: "90%",
+          textAlign: 'center',
+          width: '90%',
           maxWidth: 400,
         }}
       >
@@ -72,26 +74,20 @@ export default function ExpandedPlayer({ open, onClose }: Props) {
           src={track.img_medium_url || '/images/cover_default.jpg'}
           alt={track.title}
           sx={{
-            width: "100%",
+            width: '100%',
             borderRadius: 3,
             mb: 3,
-            boxShadow: "0 20px 60px rgba(0,0,0,0.6)",
+            boxShadow: '0 20px 60px rgba(0,0,0,0.6)',
           }}
         />
 
         {/* titre */}
-        <Typography
-          variant="h5"
-          sx={{ color: "white", fontWeight: 700 }}
-        >
+        <Typography variant="h5" sx={{ color: 'white', fontWeight: 700 }}>
           {track.title}
         </Typography>
 
         {/* artiste */}
-        <Typography
-          variant="body1"
-          sx={{ color: "rgba(255,255,255,0.7)", mb: 3 }}
-        >
+        <Typography variant="body1" sx={{ color: 'rgba(255,255,255,0.7)', mb: 3 }}>
           {track.author}
         </Typography>
 
@@ -99,8 +95,8 @@ export default function ExpandedPlayer({ open, onClose }: Props) {
         <Slider
           value={progressPercent}
           sx={{
-            color: "#ff6b00",
-            "& .MuiSlider-thumb": { display: "none" },
+            color: '#ff6b00',
+            '& .MuiSlider-thumb': { display: 'none' },
           }}
         />
 
@@ -111,9 +107,9 @@ export default function ExpandedPlayer({ open, onClose }: Props) {
             mt: 3,
             width: 70,
             height: 70,
-            background: "#ff6b00",
-            color: "white",
-            "&:hover": { background: "#ff7b1a" },
+            background: '#ff6b00',
+            color: 'white',
+            '&:hover': { background: '#ff7b1a' },
           }}
         >
           {isPlaying ? <Pause fontSize="large" /> : <PlayArrow fontSize="large" />}
