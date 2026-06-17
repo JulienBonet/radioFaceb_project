@@ -10,7 +10,7 @@ RUN npm install
 
 COPY . .
 
-COPY .env.docker .env
+COPY .env.production .env
 
 RUN npm run build
 
