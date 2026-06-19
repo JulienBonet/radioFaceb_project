@@ -20,6 +20,7 @@ export default function ContactPage() {
           sx={{
             px: 3,
             pt: 4,
+            mx:2,
             pb: '120px',
             display: 'flex',
             justifyContent: 'center',

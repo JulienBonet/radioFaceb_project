@@ -21,6 +21,7 @@ export default function ContactPage() {
       <Box
         sx={{
           px: 3,
+          mx:2,
           pb: '120px',
           display: 'flex',
           justifyContent: 'center',
