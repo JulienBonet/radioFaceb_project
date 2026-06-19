@@ -76,9 +76,15 @@ export default function LastTracks({ compact = false }: Props) {
                 sx={{
                   color: 'black',
                   fontSize: compact ? 12 : 14,
-                  whiteSpace: 'nowrap',
+                  whiteSpace: {
+                    xs: 'normal',
+                    sm: 'nowrap',
+                  },
                   overflow: 'hidden',
-                  textOverflow: 'ellipsis',
+                  textOverflow: {
+                    xs: 'clip',
+                    sm: 'ellipsis',
+                  },
                 }}
               >
                 {t.author} — {t.title}
