@@ -16,13 +16,17 @@ const TitleHomePage = () => {
         RADIO FACE B
       </Typography>
       <Typography
-      component="h2"
+        component="h2"
         sx={{
           color: 'var(--color_05)',
           fontFamily: 'var(--font_02)',
           fontSize: 'large',
           fontWeight: 'bold',
           textAlign: 'center',
+          display: {
+            xs: 'none',
+            sm: 'block',
+          },
         }}
       >
         groove, chill, unexpected
