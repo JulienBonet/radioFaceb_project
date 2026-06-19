@@ -6,7 +6,7 @@ import type { Track } from '../types/audio';
 import { getCurrentEmission } from '../utils/getCurrentEmission';
 
 export const AudioProvider = ({ children }: { children: ReactNode }) => {
-  const STREAM_URL = 'http://ecmanager6.pro-fhi.net:1400/stream';
+  const STREAM_URL = 'https://ecmanager6.pro-fhi.net:1400/stream';
   type AudioMode = 'radio' | 'mixtape' | null;
 
   const audioRef = useRef<HTMLAudioElement>(new Audio());
