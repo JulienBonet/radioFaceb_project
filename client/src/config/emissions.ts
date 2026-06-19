@@ -17,7 +17,7 @@ export const EMISSIONS: Record<string, EmissionConfig> = {
     image: '/images/emissions/GROOVE_WAKE_UP.jpg',
     schedule: '06h30 - 09h30',
     needsLightShadow: false,
-    description: 'Radio Face B groove ton réveil. Le meilleur petit dej pour tes oreilles',
+    description: 'Groove ton réveil avec radio Face B. Offre à tes oreilles le meilleur des petits déjeuners.',
     styles: '• 80s • 90s • soul • funk • R&B • pop • rock • disco • reggae • world •',
   },
 
@@ -37,7 +37,7 @@ export const EMISSIONS: Record<string, EmissionConfig> = {
     image: '/images/emissions/GROOVY_LUNCH.jpg',
     schedule: '11h30 - 13h30',
     needsLightShadow: false,
-    description: 'Les Dejs sont énergiques sur Face B. On groove dynamique et épicé',
+    description: 'La pause déjeuner est énergique sur Face B. On vous la sert avec du groove dynamique et épicé',
     styles: '• soul • funk • R&B • hiphop • rock • pop • reggae • electro • afro • latino •',
   },
 
@@ -67,7 +67,7 @@ export const EMISSIONS: Record<string, EmissionConfig> = {
     image: '/images/emissions/GROOVE_PARTY.jpg',
     schedule: '20h30 - 22h30',
     needsLightShadow: false,
-    description: 'En soirée, la groove party de Radio Face B fait danser ton parquet',
+    description: 'En soirée, la groove party de Radio Face B fait chauffer le dancefloor et ton parquet',
     styles: '• disco • house • funk • soul • rock • hiphop • ragga • afro • latino •',
   },
 
@@ -126,7 +126,7 @@ export const EMISSIONS: Record<string, EmissionConfig> = {
     image: '/images/emissions/WOLF_HOUR_01.jpg',
     schedule: '01h30 - 03h30',
     needsLightShadow: false,
-    description: 'Au coeur de la nuit, les grooves se font loups et toutes les vibes sont grisent',
+    description: 'Au coeur de la nuit, quand les loups sont réveillés, les vibes hurlent en meute sur Radio Face B',
     styles: '• techno • electro • minimale • hiphop • jungle • dub • rock • cold wave • dark wave • punk • soul • funk •',
   },
 
