@@ -19,6 +19,6 @@ router.use('/contact', contactRoute);
 router.use('/newsletter', newsletterRoute);
 router.use('/admin', adminAuthRoute);
 router.use('/stats', adminStatsRoute);
-router.use("/api/health", healthRoute);
+router.use("/health", healthRoute);
 
 export default router;
