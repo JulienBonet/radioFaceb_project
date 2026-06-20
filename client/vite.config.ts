@@ -33,13 +33,13 @@ export default defineConfig({
 
         icons: [
           {
-            src: '/images/PWA_FB_logo_main.png',
+            src: '/images/PWA_FB_logo_main2.png',
             sizes: '512x512',
             type: 'image/png',
           },
 
           {
-            src: '/images/PWA_FB_logo_main.png',
+            src: '/images/PWA_FB_logo_main2.png',
             sizes: '512x512',
             type: 'image/png',
             purpose: 'maskable',
