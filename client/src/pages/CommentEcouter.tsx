@@ -15,7 +15,7 @@ export default function Presentation() {
     color: 'black',
   };
   const ecouterTypoSxH2Span = {
-    color: { xs: 'var(--color_01)', sm: 'var(--color_07)' },
+    color: { xs: 'var(--color_01)', sm: 'var(--color_03)' },
   };
 
   const ecouterTypoSxP = {
