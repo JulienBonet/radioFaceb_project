@@ -20,8 +20,8 @@ export default defineConfig({
 
         description: 'Web radio indépendante',
 
-        theme_color: '#000000',
-        background_color: '#000000',
+        theme_color: '#eadfb1',
+        background_color: '#eadfb1',
 
         display: 'standalone',
         orientation: 'portrait',
@@ -39,7 +39,7 @@ export default defineConfig({
           },
 
           {
-            src: '/images/PWA_FB_logo_mask.png',
+            src: '/images/PWA_FB_logo_main.png',
             sizes: '512x512',
             type: 'image/png',
             purpose: 'maskable',
