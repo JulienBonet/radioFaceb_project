@@ -2,8 +2,12 @@ import { Box, Stack, Button } from '@mui/material';
 import { Link } from 'react-router-dom';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
+import InstallMobileIcon from '@mui/icons-material/InstallMobile';
+import { usePWAInstall } from '../hooks/usePWAInstall';
 
 export default function HomeLinkBar() {
+  const { isInstallable, install, isStandalone } = usePWAInstall();
+
   return (
     <Stack
       sx={{
@@ -14,6 +18,7 @@ export default function HomeLinkBar() {
         gap: 1,
       }}
     >
+      {/* Instagram */}
       <Button
         component="a"
         href="https://www.instagram.com/radiofaceb/"
@@ -23,8 +28,10 @@ export default function HomeLinkBar() {
           color: '#C13584',
         }}
       >
-        <InstagramIcon sx={{ fontSize: 20 }} />
+        <InstagramIcon sx={{ fontSize: { xs: 28, sm: 24, md: 20 }, }} />
       </Button>
+
+      {/* Deezer */}
       <Button
         component="a"
         href="https://www.deezer.com/search/radio%20face%20b/livestream"
@@ -41,13 +48,22 @@ export default function HomeLinkBar() {
           alt="Écouter Radio Face B sur Deezer"
           sx={{
             width: 'auto',
-            height: 18,
+            height: { xs: 26, sm: 22, md: 18 },
           }}
         />
       </Button>
+
+      {/* Newsletter */}
       <Button component={Link} to="/newsletter">
-        <EmailOutlinedIcon sx={{ fontSize: 20 }} />
+        <EmailOutlinedIcon sx={{ fontSize: { xs: 28, sm: 24, md: 20 }, }} />
       </Button>
+
+      {/* PWA install */}
+      {isInstallable && !isStandalone && (
+      <Button onClick={install} sx={{ minWidth: 'auto' }}>
+        <InstallMobileIcon sx={{ fontSize: { xs: 28, sm: 24, md: 20 }, color: '#cf7e0f' }} />
+      </Button>
+       )}
     </Stack>
   );
 }

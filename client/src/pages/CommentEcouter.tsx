@@ -2,13 +2,20 @@ import { Box, Stack, Typography, Button, Divider } from '@mui/material';
 import { toast } from 'sonner';
 import { Link } from 'react-router-dom';
 import Seo from '../components/Seo';
+import { usePWAInstall } from '../hooks/usePWAInstall';
+import InstallPWAButton from '../components/InstallPWAButton';
 
 export default function Presentation() {
+  const { isInstallable, isStandalone } = usePWAInstall();
+
   const ecouterTypoSxH2 = {
-    fontFamily: 'var(--font_02)',
-    fontWeight: 'bold',
-    fontSize: { xs: 'large', sm: 'x-large' },
+    fontFamily: { xs: 'var(--font_01)', sm: 'var(--font_02)' },
+    fontWeight: { xs: 'normal', sm: 'bold' },
+    fontSize: { xs: 'medium', sm: 'x-large' },
     color: 'black',
+  };
+  const ecouterTypoSxH2Span = {
+    color: { xs: 'var(--color_01)', sm: 'var(--color_07)' },
   };
 
   const ecouterTypoSxP = {
@@ -94,6 +101,7 @@ export default function Presentation() {
               sx={{ width: '100%' }}
             />
             <Divider sx={{ my: 3 }} />
+            {/* Intro */}
             <Stack spacing={1.5} sx={{ my: 2, alignItems: 'flex-start' }}>
               <Typography sx={ecouterTypoSxP}>
                 Il est très simple d’écouter Radio Face B.
@@ -128,21 +136,24 @@ export default function Presentation() {
                     Sur Deezer
                   </a>
                 </li>
+                {isInstallable && !isStandalone && (
+                  <li>
+                    <a href="#webapp" style={ecouterLinkStyle}>
+                      En téléchargeant notre Web-App
+                    </a>
+                  </li>
+                )}
               </Box>
             </Stack>
 
             <Divider sx={ecouterDividerSx} />
 
+            {/* ecoute sur le site */}
+
             <Stack id="site-player" spacing={1.5} sx={{ my: 2, alignItems: 'flex-start' }}>
               <Typography component="h2" sx={ecouterTypoSxH2}>
                 ÉCOUTER RADIO FACE B{' '}
-                <Box
-                  component="span"
-                  sx={{
-                    fontWeight: 'bold',
-                    color: 'var(--color_07)',
-                  }}
-                >
+                <Box component="span" sx={ecouterTypoSxH2Span}>
                   DIRECTEMENT SUR LE SITE
                 </Box>
               </Typography>
@@ -159,16 +170,12 @@ export default function Presentation() {
 
             <Divider sx={ecouterDividerSx} />
 
+            {/* ecoute MediaPlayer */}
+
             <Stack id="media-player" spacing={1.5} sx={{ my: 2, alignItems: 'flex-start' }}>
               <Typography component="h2" sx={ecouterTypoSxH2}>
                 ÉCOUTER RADIO FACE B{' '}
-                <Box
-                  component="span"
-                  sx={{
-                    fontWeight: 'bold',
-                    color: 'var(--color_07)',
-                  }}
-                >
+                <Box component="span" sx={ecouterTypoSxH2Span}>
                   DANS VOTRE MEDIA PLAYER
                 </Box>
               </Typography>
@@ -186,6 +193,7 @@ export default function Presentation() {
                 ), en <strong>copiant-collant</strong> l'url du stream directement dans la section
                 dédiée de votre lecteur,
               </Typography>
+              <Stack sx={{ alignItems: 'center', width: '100%', py: 2 }}>
               <Button
                 variant="outlined"
                 onClick={async () => {
@@ -206,20 +214,17 @@ export default function Presentation() {
               >
                 📋 Copier l'adresse du stream
               </Button>
+              </Stack>
             </Stack>
 
             <Divider sx={ecouterDividerSx} />
 
+            {/* ecoute sur Deezer */}
+
             <Stack id="deezer" spacing={1.5} sx={{ my: 2, alignItems: 'flex-start' }}>
               <Typography component="h2" sx={ecouterTypoSxH2}>
                 ÉCOUTER RADIO FACE B{' '}
-                <Box
-                  component="span"
-                  sx={{
-                    fontWeight: 'bold',
-                    color: 'var(--color_07)',
-                  }}
-                >
+                <Box component="span" sx={ecouterTypoSxH2Span}>
                   SUR DEEZER
                 </Box>
               </Typography>
@@ -273,6 +278,37 @@ export default function Presentation() {
                 </Button>
               </Stack>
             </Stack>
+
+            {/* Télécharger web App*/}
+
+            {isInstallable && !isStandalone && (
+              <>
+            <Divider sx={ecouterDividerSx} />
+
+            <Stack id="webapp" spacing={1.5} sx={{ my: 2, alignItems: 'flex-start' }}>
+              <Typography component="h2" sx={ecouterTypoSxH2}>
+                ÉCOUTER RADIO FACE B{' '}
+                <Box component="span" sx={ecouterTypoSxH2Span}>
+                  EN TELECHARGEANT NOTRE WEB APP
+                </Box>
+              </Typography>
+              <Typography sx={ecouterTypoSxP}>
+                &gt; Installez la <strong>Web App Radio Face B</strong> pour accéder à la radio
+                comme une application native, directement depuis votre écran d’accueil.
+              </Typography>
+              <Typography sx={ecouterTypoSxP}>
+                – Pas besoin de passer par les apps stores, on reste libre et vous aussi.
+              </Typography>
+              <Typography sx={ecouterTypoSxP}>
+                – Un <strong>accès direct à nos programmes</strong>, sans navigateur, plus{' '}
+                <strong>rapide</strong> et plus <strong>fluide</strong>.
+              </Typography>
+              <Stack sx={{ alignItems: 'center', width: '100%', py: 2 }}>
+                <InstallPWAButton />
+              </Stack>
+            </Stack>
+            </>
+            )}
             <Divider sx={{ my: 3 }} />
           </Box>
         </Stack>
