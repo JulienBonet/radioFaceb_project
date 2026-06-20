@@ -3,9 +3,7 @@ import DownloadIcon from '@mui/icons-material/Download';
 import { usePWAInstall } from "../hooks/usePWAInstall";
 
 export default function InstallPWAButton() {
-    const { isInstallable, install } = usePWAInstall();
-
-    if (!isInstallable) return null;
+    const { install } = usePWAInstall();
 
   return (
     <Button
