@@ -3,6 +3,7 @@
 import { Box } from '@mui/material';
 import Seo from '../components/Seo';
 import ContactBlock from '../components/contact/ContactBlock';
+import InstagramBlock from '../components/contact/InstagramBlock';
 
 export default function ContactPage() {
   //-------------------------
@@ -29,6 +30,7 @@ export default function ContactPage() {
           }}
         >
           <ContactBlock />
+          <InstagramBlock />
         </Box>
       </main>
     </>
