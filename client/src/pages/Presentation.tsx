@@ -91,7 +91,7 @@ export default function Presentation() {
               </Typography>
               <Typography sx={radioTypoSxP}>
                 ✊ Indépendante, made in Aubervilliers (93), faites à la main par{' '}
-                <strong>BIG Julius</strong>, DJ et digger obsessionnel de musique.
+                <strong>BIG Julius</strong>, DJ et digger musical obsessionnel.
               </Typography>
               <Box sx={{ pt: 2 }}>
                 <Button
@@ -154,8 +154,8 @@ export default function Presentation() {
                   component={Link}
                   to="/grille"
                   sx={{
-                    color: 'var(--color_07)',
-                    borderColor: 'var(--color_07)',
+                    color: 'var(--color_01)',
+                    borderColor: 'var(--color_01)',
 
                     '&:hover': {
                       borderColor: 'var(--color_05)',
