@@ -2,11 +2,8 @@ import { Box, Stack, Button } from '@mui/material';
 import { Link } from 'react-router-dom';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
-import InstallMobileIcon from '@mui/icons-material/InstallMobile';
-import { usePWAInstall } from '../hooks/usePWAInstall';
 
 export default function HomeLinkBar() {
-  const { isInstallable, install, isStandalone } = usePWAInstall();
 
   return (
     <Stack
@@ -58,12 +55,6 @@ export default function HomeLinkBar() {
         <EmailOutlinedIcon sx={{ fontSize: { xs: 28, sm: 24, md: 20 }, }} />
       </Button>
 
-      {/* PWA install */}
-      {isInstallable && !isStandalone && (
-      <Button onClick={install} sx={{ minWidth: 'auto' }}>
-        <InstallMobileIcon sx={{ fontSize: { xs: 28, sm: 24, md: 20 }, color: '#cf7e0f' }} />
-      </Button>
-       )}
     </Stack>
   );
 }

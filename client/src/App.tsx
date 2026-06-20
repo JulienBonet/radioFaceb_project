@@ -1,6 +1,7 @@
 import { BrowserRouter, useLocation } from 'react-router-dom';
 
 import { AudioProvider } from './context/AudioProvider';
+import { PWAProvider } from './context/pwa/PWAProvider';
 
 import Header from './components/Header';
 import MenuDesktop from './components/MenuDesktop';
@@ -18,15 +19,17 @@ function AppContent() {
   const isAdminRoute = location.pathname.startsWith('/admin');
 
   return (
-    <AudioProvider>
-       {!isAdminRoute && <Header />}
+    <PWAProvider>
+      <AudioProvider>
+        {!isAdminRoute && <Header />}
 
-      {!isAdminRoute && !isMobile && !isTablet && <MenuDesktop />}
+        {!isAdminRoute && !isMobile && !isTablet && <MenuDesktop />}
 
-      <Router />
+        <Router />
 
-      {!isAdminRoute && <FooterPlayer />}
-    </AudioProvider>
+        {!isAdminRoute && <FooterPlayer />}
+      </AudioProvider>
+    </PWAProvider>
   );
 }
 
