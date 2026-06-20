@@ -8,6 +8,7 @@ import contactRoute from './routes/contactRoute.js';
 import newsletterRoute from './routes/newsletterRoute.js';
 import adminAuthRoute from './routes/adminAuthRoute.js'
 import adminStatsRoute from './routes/adminStatsRoute.js'
+import healthRoute from './routes/healthRoute.js'
 
 const router = Router();
 
@@ -18,5 +19,6 @@ router.use('/contact', contactRoute);
 router.use('/newsletter', newsletterRoute);
 router.use('/admin', adminAuthRoute);
 router.use('/stats', adminStatsRoute);
+router.use("/api/health", healthRoute);
 
 export default router;
