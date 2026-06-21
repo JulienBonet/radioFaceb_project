@@ -11,13 +11,13 @@ export const AudioProvider = ({ children }: { children: ReactNode }) => {
 
   const audioRef = useRef<HTMLAudioElement>(new Audio());
 
+  const [isConnecting, setIsConnecting] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const [track, setTrack] = useState<Track | null>(null);
   const [progress, setProgress] = useState(0);
   const [volume, setVolume] = useState(1);
   const [prevVolume, setPrevVolume] = useState(1);
   const [audioMode, setAudioMode] = useState<AudioMode>(null);
-
   const [emission, setEmission] = useState(getCurrentEmission());
 
   const createAudio = () => {
@@ -28,16 +28,23 @@ export const AudioProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const play = async () => {
-    if (audioRef.current) {
-      audioRef.current.pause();
+    try {
+      setIsConnecting(true);
+
+      if (audioRef.current) {
+        audioRef.current.pause();
+      }
+
+      audioRef.current = createAudio();
+      audioRef.current.volume = volume;
+
+      await audioRef.current.play();
+
+      setAudioMode('radio');
+      setIsPlaying(true);
+    } finally {
+      setIsConnecting(false);
     }
-
-    audioRef.current = createAudio();
-    audioRef.current.volume = volume;
-
-    await audioRef.current.play();
-    setAudioMode('radio');
-    setIsPlaying(true);
   };
 
   const stop = () => {
@@ -107,6 +114,7 @@ export const AudioProvider = ({ children }: { children: ReactNode }) => {
     <AudioContext.Provider
       value={{
         isPlaying,
+        isConnecting,
         play,
         stop,
         track,

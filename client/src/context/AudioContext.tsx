@@ -15,6 +15,7 @@ export interface Track {
 
 export interface AudioContextType {
   isPlaying: boolean;
+  isConnecting: boolean;
   play: () => void;
   stop: () => void;
   track: Track | null;

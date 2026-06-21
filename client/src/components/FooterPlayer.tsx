@@ -1,6 +1,7 @@
 // client/src/components/FooterPlayer.tsx
 import { Box, Stack, Slider, IconButton, Typography } from '@mui/material';
 import { PlayArrow, Pause } from '@mui/icons-material';
+import CircularProgress from '@mui/material/CircularProgress';
 import { ExpandLess, ExpandMore } from '@mui/icons-material';
 import { VolumeUp, VolumeOff } from '@mui/icons-material';
 import { useAudio } from '../hooks/useAudio';
@@ -9,7 +10,8 @@ import { useResponsive } from '../hooks/useResponsive';
 import ExpandedPlayer from './ExpandedPlayer';
 
 export default function FooterPlayer() {
-  const { isPlaying, play, stop, track, setVolume, volume, toggleMute, audioMode } = useAudio();
+  const { isPlaying, isConnecting, play, stop, track, setVolume, volume, toggleMute, audioMode } =
+    useAudio();
   const [open, setOpen] = useState(false);
 
   const { isMobile } = useResponsive();
@@ -155,8 +157,14 @@ export default function FooterPlayer() {
                 },
               }}
             >
-              {isPlaying ? <Pause /> : <PlayArrow />}
-            </IconButton>
+              {isConnecting ? (
+                <CircularProgress size={22} color="inherit" />
+              ) : isPlaying ? (
+                <Pause />
+              ) : (
+                <PlayArrow />
+              )}
+            </IconButton >
           </Box>
 
           {/* RIGHT */}
