@@ -3,6 +3,8 @@ import { BrowserRouter, useLocation } from 'react-router-dom';
 import { AudioProvider } from './context/AudioProvider';
 import { PWAProvider } from './context/pwa/PWAProvider';
 
+import MatomoTracker from './components/MatomoTracker';
+
 import Header from './components/Header';
 import MenuDesktop from './components/MenuDesktop';
 import FooterPlayer from './components/FooterPlayer';
@@ -21,6 +23,7 @@ function AppContent() {
   return (
     <PWAProvider>
       <AudioProvider>
+         <MatomoTracker />
         {!isAdminRoute && <Header />}
 
         {!isAdminRoute && !isMobile && !isTablet && <MenuDesktop />}
