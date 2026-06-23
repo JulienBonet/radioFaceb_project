@@ -1,3 +1,4 @@
+// client/src/pages/MixtapeDetail.tsx
 import { useParams, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { Box, Stack, Typography, Divider } from '@mui/material';

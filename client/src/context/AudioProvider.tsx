@@ -4,12 +4,15 @@ import { AudioContext } from './AudioContext';
 import type { ReactNode } from 'react';
 import type { Track } from '../types/audio';
 import { getCurrentEmission } from '../utils/getCurrentEmission';
+import { trackEvent } from '../utils/matomo';
 
 export const AudioProvider = ({ children }: { children: ReactNode }) => {
   const STREAM_URL = 'https://ecmanager6.pro-fhi.net:1400/stream';
   type AudioMode = 'radio' | 'mixtape' | null;
 
   const audioRef = useRef<HTMLAudioElement>(new Audio());
+  const listeningStartRef = useRef<number | null>(null);
+  const milestonesRef = useRef(new Set<number>());
 
   const [isConnecting, setIsConnecting] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -22,7 +25,7 @@ export const AudioProvider = ({ children }: { children: ReactNode }) => {
 
   const createAudio = () => {
     const audio = new Audio();
-    audio.src = `${STREAM_URL}?t=${Date.now()}`; // 🔥 anti-buffer cache
+    audio.src = `${STREAM_URL}?t=${Date.now()}`;
     audio.preload = 'none';
     return audio;
   };
@@ -40,6 +43,9 @@ export const AudioProvider = ({ children }: { children: ReactNode }) => {
 
       await audioRef.current.play();
 
+      listeningStartRef.current = Date.now();
+      milestonesRef.current.clear();
+
       setAudioMode('radio');
       setIsPlaying(true);
     } finally {
@@ -56,9 +62,34 @@ export const AudioProvider = ({ children }: { children: ReactNode }) => {
       audioRef.current.load();
     }
 
+    listeningStartRef.current = null;
+    milestonesRef.current.clear();
+
     setIsPlaying(false);
   };
 
+  // EVENTS MATOMO
+  useEffect(() => {
+    if (!isPlaying || audioMode !== 'radio') return;
+
+    const interval = setInterval(() => {
+      if (!listeningStartRef.current) return;
+
+      const minutes = Math.floor((Date.now() - listeningStartRef.current) / 60000);
+
+      [5, 10, 15, 30].forEach((threshold) => {
+        if (minutes >= threshold && !milestonesRef.current.has(threshold)) {
+          milestonesRef.current.add(threshold);
+
+          trackEvent('Stream', `play_${threshold}min`);
+        }
+      });
+    }, 10000);
+
+    return () => clearInterval(interval);
+  }, [isPlaying, audioMode]);
+
+  // MUTE
   const toggleMute = () => {
     if (volume > 0) {
       setPrevVolume(volume);

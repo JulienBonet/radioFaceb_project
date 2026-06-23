@@ -1,3 +1,4 @@
+// client/src/components/players/HearthisPlayer.tsx
 type Props = {
   trackId: string;
 };

@@ -11,6 +11,7 @@ import {
   Alert,
   Box,
 } from '@mui/material';
+import { trackEvent } from '../../utils/matomo';
 
 export default function NewsletterBlock() {
   const [newsletterForm, setNewsletterForm] = useState({
@@ -93,6 +94,8 @@ export default function NewsletterBlock() {
       }
 
       setNewsletterSuccess(true);
+
+      trackEvent('Newsletter', 'signup');
 
       setNewsletterForm({
         name: '',

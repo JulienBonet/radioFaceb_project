@@ -1,13 +1,16 @@
-import React, { useEffect, useState } from "react";
-import { PWAContext, type BeforeInstallPromptEvent } from "./pwaContext";
+// client/src/context/pwa/PWAProvider.tsx
+import React, { useEffect, useState } from 'react';
+import { PWAContext, type BeforeInstallPromptEvent } from './pwaContext';
+import { trackEvent } from '../../utils/matomo';
 
 export function PWAProvider({ children }: { children: React.ReactNode }) {
   const [promptEvent, setPromptEvent] = useState<BeforeInstallPromptEvent | null>(null);
   const [isInstallable, setIsInstallable] = useState(false);
 
   const isStandalone =
-  window.matchMedia("(display-mode: standalone)").matches ||
-  ("standalone" in window.navigator && (window.navigator as Navigator & { standalone?: boolean }).standalone === true);
+    window.matchMedia('(display-mode: standalone)').matches ||
+    ('standalone' in window.navigator &&
+      (window.navigator as Navigator & { standalone?: boolean }).standalone === true);
 
   useEffect(() => {
     const handler = (e: Event) => {
@@ -18,10 +21,10 @@ export function PWAProvider({ children }: { children: React.ReactNode }) {
       setIsInstallable(true);
     };
 
-    window.addEventListener("beforeinstallprompt", handler);
+    window.addEventListener('beforeinstallprompt', handler);
 
     return () => {
-      window.removeEventListener("beforeinstallprompt", handler);
+      window.removeEventListener('beforeinstallprompt', handler);
     };
   }, []);
 
@@ -29,7 +32,12 @@ export function PWAProvider({ children }: { children: React.ReactNode }) {
     if (!promptEvent) return;
 
     promptEvent.prompt();
-    await promptEvent.userChoice;
+
+    const result = await promptEvent.userChoice;
+
+    if (result.outcome === 'accepted') {
+      trackEvent('PWA', 'install');
+    }
 
     setPromptEvent(null);
     setIsInstallable(false);
