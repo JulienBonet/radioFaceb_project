@@ -68,7 +68,7 @@ export const AudioProvider = ({ children }: { children: ReactNode }) => {
     setIsPlaying(false);
   };
 
-  // EVENTS MATOMO
+  // EVENTS MATOMO STREAM
   useEffect(() => {
     if (!isPlaying || audioMode !== 'radio') return;
 
@@ -77,7 +77,7 @@ export const AudioProvider = ({ children }: { children: ReactNode }) => {
 
       const minutes = Math.floor((Date.now() - listeningStartRef.current) / 60000);
 
-      [1, 5, 10, 15, 30].forEach((threshold) => {
+      [1, 5, 10, 15, 30, 60, 90, 120, 240].forEach((threshold) => {
         if (minutes >= threshold && !milestonesRef.current.has(threshold)) {
           milestonesRef.current.add(threshold);
 
