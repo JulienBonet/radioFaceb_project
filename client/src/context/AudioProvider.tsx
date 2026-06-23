@@ -77,7 +77,7 @@ export const AudioProvider = ({ children }: { children: ReactNode }) => {
 
       const minutes = Math.floor((Date.now() - listeningStartRef.current) / 60000);
 
-      [5, 10, 15, 30].forEach((threshold) => {
+      [1, 5, 10, 15, 30].forEach((threshold) => {
         if (minutes >= threshold && !milestonesRef.current.has(threshold)) {
           milestonesRef.current.add(threshold);
 
