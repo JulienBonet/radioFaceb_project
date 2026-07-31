@@ -3,3 +3,5 @@
 dev-tools
 .env
 .env.docker
+
+docker-compose.yml

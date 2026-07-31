@@ -1,0 +1,59 @@
+# docker-compose.yml
+
+services:
+
+  proxy:
+    image: nginx:alpine
+    container_name: rfb-proxy
+
+    ports:
+      - "80:80"
+
+    volumes:
+      - ./proxy/nginx.conf:/etc/nginx/nginx.conf:ro
+
+    depends_on:
+      - frontend
+      - backend
+
+  mysql:
+    image: mysql:8
+    container_name: rfb-mysql
+
+    environment:
+      MYSQL_ROOT_PASSWORD:
+      MYSQL_DATABASE:
+
+    ports:
+      - "3307:3306"
+
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  backend:
+    build: ./server
+
+    container_name: rfb-backend
+
+    ports:
+      - "5000:5000"
+
+    env_file:
+      - ./server/.env.docker
+
+    depends_on:
+      - mysql
+
+  frontend:
+    build: ./client
+
+    container_name: rfb-frontend
+
+    ports:
+      - "8080:80"
+
+    depends_on:
+      - backend
+
+volumes:
+  mysql_data:
