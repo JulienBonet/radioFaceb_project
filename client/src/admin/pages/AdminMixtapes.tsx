@@ -9,7 +9,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 
 import { useEffect, useState } from 'react';
 
-import { getAllMixtapes } from '../../api/mixtape.api';
+import { adminFetch } from '../api/adminFetch';
 
 import { deleteMixtape } from '../api/adminMixtapeApi';
 
@@ -27,17 +27,23 @@ const AdminMixtapesPage = () => {
 
   const [loading, setLoading] = useState(true);
 
-  const fetchData = async () => {
-    try {
-      const data = await getAllMixtapes();
+const fetchData = async () => {
+  try {
+    const res = await adminFetch('/mixtapes');
 
-      setMixtapes(data);
-    } catch (err) {
-      console.error(err);
-    } finally {
-      setLoading(false);
+    if (!res.ok) {
+      throw new Error('Error fetching mixtapes');
     }
-  };
+
+    const data: Mixtape[] = await res.json();
+
+    setMixtapes(data);
+  } catch (err) {
+    console.error(err);
+  } finally {
+    setLoading(false);
+  }
+};
 
   useEffect(() => {
     const load = async () => {

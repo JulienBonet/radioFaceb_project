@@ -20,8 +20,29 @@ export const getAllPublished = async (req, res) => {
 };
 
 export const getById = async (req, res) => {
-  const data = await model.getMixtapeById(req.params.id);
-  res.json(data);
+  try {
+    const data = await model.getMixtapeById(req.params.id);
+
+    if (!data) {
+      return res.status(404).json({
+        message: 'Mixtape not found',
+      });
+    }
+
+    if (!data.is_published && !req.user?.is_admin) {
+      return res.status(403).json({
+        message: 'Forbidden',
+      });
+    }
+
+    res.json(data);
+  } catch (err) {
+    console.error(err);
+
+    res.status(500).json({
+      message: 'Erreur récupération mixtape',
+    });
+  }
 };
 
 export const create = async (req, res) => {
