@@ -58,7 +58,6 @@ Un espace d'administration sécurisé permet de gérer les contenus de la platef
 | TypeScript | Typage statique |
 | Vite | Outil de développement et de build |
 | Material UI | Composants d'interface |
-| Sass | Styles |
 | React Router | Navigation |
 | React Hook Form | Gestion des formulaires |
 | Zod | Validation des données |
