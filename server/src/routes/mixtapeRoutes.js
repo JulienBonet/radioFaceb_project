@@ -1,8 +1,8 @@
 // server/src/routes/mixtapeRoutes.js
 import { Router } from 'express';
 import * as controller from '../controller/mixtapeController.js';
-import {adminAuthMiddleware} from '../middleware/adminAuthMiddleware.js'
-import { authOptionalMiddleware } from '../middleware/authOptionalMiddleware.js'; 
+import { adminAuthMiddleware } from '../middleware/adminAuthMiddleware.js';
+import { authOptionalMiddleware } from '../middleware/authOptionalMiddleware.js';
 
 const router = Router();
 

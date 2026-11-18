@@ -7,10 +7,6 @@ import { adminAuthMiddleware } from '../middleware/adminAuthMiddleware.js';
 
 const router = Router();
 
-router.get(
-  '/',
-  adminAuthMiddleware,
-  getStats
-);
+router.get('/', adminAuthMiddleware, getStats);
 
 export default router;

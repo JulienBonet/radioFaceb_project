@@ -19,11 +19,7 @@ export const upload = multer({
     ];
 
     if (!allowedMimeTypes.includes(file.mimetype)) {
-      return cb(
-        new Error(
-          'Format invalide. Utilisez JPG, PNG ou WEBP.'
-        )
-      );
+      return cb(new Error('Format invalide. Utilisez JPG, PNG ou WEBP.'));
     }
 
     cb(null, true);

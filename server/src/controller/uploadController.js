@@ -16,7 +16,6 @@ export const uploadMixtapeCover = async (req, res) => {
     res.json({
       filename: result.filename,
     });
-
   } catch (err) {
     console.error(err);
 

@@ -95,10 +95,7 @@ export const createMixtape = async (data) => {
 };
 
 export const updateMixtape = async (id, data) => {
-  await db.query(
-    `UPDATE mixtape SET ? WHERE id = ?`,
-    [data, id]
-  );
+  await db.query(`UPDATE mixtape SET ? WHERE id = ?`, [data, id]);
 };
 
 export const deleteMixtape = async (id) => {

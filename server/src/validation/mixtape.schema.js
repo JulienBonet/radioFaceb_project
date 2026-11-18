@@ -1,32 +1,25 @@
 // server/src/validation/mixtape.schema.js
 import { z } from 'zod';
 
-const mixcloudRegex =
-  /^[A-Z0-9_-]+\/[a-z0-9-]+$/i;
+const mixcloudRegex = /^[A-Z0-9_-]+\/[a-z0-9-]+$/i;
 
 const hearthisRegex = /^[0-9]+$/;
 
 export const validateEmbedRef = (data, ctx) => {
   if (data.platform === 'mixcloud') {
-    if (
-      !mixcloudRegex.test(data.embed_ref)
-    ) {
+    if (!mixcloudRegex.test(data.embed_ref)) {
       ctx.addIssue({
         path: ['embed_ref'],
-        message:
-          'Invalid Mixcloud format',
+        message: 'Invalid Mixcloud format',
       });
     }
   }
 
   if (data.platform === 'hearthis') {
-    if (
-      !hearthisRegex.test(data.embed_ref)
-    ) {
+    if (!hearthisRegex.test(data.embed_ref)) {
       ctx.addIssue({
         path: ['embed_ref'],
-        message:
-          'Invalid HearThis ID',
+        message: 'Invalid HearThis ID',
       });
     }
   }
@@ -56,7 +49,7 @@ export const createMixtapeSchema = z
     validateEmbedRef(data, ctx);
   });
 
-  export const updateMixtapeSchema = z
+export const updateMixtapeSchema = z
   .object({
     title: z.string().min(2).max(255).optional(),
 

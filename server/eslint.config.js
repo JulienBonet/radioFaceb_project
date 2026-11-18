@@ -1,6 +1,7 @@
 import js from '@eslint/js';
 import globals from 'globals';
 import security from 'eslint-plugin-security';
+import prettierPlugin from 'eslint-plugin-prettier';
 
 export default [
   {
@@ -21,10 +22,12 @@ export default [
     },
     plugins: {
       security,
+      prettier: prettierPlugin,
     },
     rules: {
       ...js.configs.recommended.rules,
       ...security.configs.recommended.rules,
+      'prettier/prettier': 'error',
 
       // Backend
       'consistent-return': 'off',

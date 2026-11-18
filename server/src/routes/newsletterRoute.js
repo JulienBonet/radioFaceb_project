@@ -26,12 +26,7 @@ router.post(
 
   async (req, res) => {
     try {
-      const {
-        name,
-        email,
-        consent,
-        website,
-      } = req.body;
+      const { name, email, consent, website } = req.body;
 
       // honeypot anti-bot
       if (website) {
@@ -55,14 +50,12 @@ router.post(
       // consentement
       if (!consent) {
         return res.status(400).json({
-          error:
-            'Veuillez accepter les conditions',
+          error: 'Veuillez accepter les conditions',
         });
       }
 
       // regex email
-      const emailRegex =
-        /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
       if (!emailRegex.test(cleanEmail)) {
         return res.status(400).json({
@@ -86,8 +79,7 @@ router.post(
 
         to: process.env.MAIL_USER,
 
-        subject:
-          'Nouvelle inscription newsletter',
+        subject: 'Nouvelle inscription newsletter',
 
         text: `
 Nouvelle inscription newsletter Radio Face B

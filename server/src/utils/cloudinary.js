@@ -9,9 +9,7 @@ cloudinary.config({
 
 export const uploadBufferToCloudinary = ({ buffer }) => {
   return new Promise((resolve, reject) => {
-    const randomString = Math.random()
-      .toString(36)
-      .substring(2, 8);
+    const randomString = Math.random().toString(36).substring(2, 8);
 
     const filename = `mixtape_${randomString}.jpg`;
 
@@ -47,9 +45,7 @@ export const uploadBufferToCloudinary = ({ buffer }) => {
   });
 };
 
-export const deleteFromCloudinary = async ({
-  filename,
-}) => {
+export const deleteFromCloudinary = async ({ filename }) => {
   if (!filename) return;
 
   if (filename === 'default-mixtape.jpg') {
@@ -58,7 +54,5 @@ export const deleteFromCloudinary = async ({
 
   const publicId = filename.replace('.jpg', '');
 
-  await cloudinary.uploader.destroy(
-    `radio/mixtapes/${publicId}`
-  );
+  await cloudinary.uploader.destroy(`radio/mixtapes/${publicId}`);
 };
